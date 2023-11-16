@@ -1,0 +1,98 @@
+<!-- 1.- Comenzamos con la estructura básica html estableciendo lang en-->
+<!-- 2.- Agregamos dentro de head una etiqueta meta con charset en utf-8.
+También agregamos un tittle con un texto ESPECÍFICO-->
+<!-- 3.- Agregamos un elemento link dentro de head para vincular la stylesheet de
+nuestro html, no olvidamos esta vez el rel 
+ES IMPORTANTE ACLARAR QUE ES BUENA PRÁCTICA HACERLO DE LA SIGUIENTE MANERA:
+href="./styles2.css"-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>fCC Cat Painting</title>
+        <link rel="stylesheet" href="./styles2.css">
+    </head>
+    <body>
+        <!-- 4.- Creamos un main element. Dentro añadimos un div con la clase 
+        cat-head -->
+        <main>
+            <div class="cat-head">
+                <!-- 7.- Ahora, trabajaremos con las orejas de nuestro gato. Le deremos una
+                oreja IZQUIERDA y DERECHA y DENTRO de cada uno, habrá un inner ear (oído interno)
+                Dentro de este div .cat-head, creamos un div con class .cat-ears-->
+                <div class="cat-ears">
+                    <!-- 8.- Dentro de aquí, .cat-ears, creamos DOS elementos div con las clases
+                    .cat-left-ear y cat-right-ear -->
+                    <div class="cat-left-ear">
+                        <!-- 9.- Dentro de este elemento, .cat-left-ear, creamos otro div con la class
+                        cat-left-inner-ear -->
+                        <div class="cat-left-inner-ear"></div>
+                    </div>
+                    <div class="cat-right-ear">
+                        <!-- 10.- Dentro de este elemento .cat-right-ear creamos otro div con class
+                        cat-right-inner-ear -->
+                        <div class="cat-right-inner-ear"></div>
+                    </div>
+                </div>
+                <!-- 11.- Ahora trabajaremos con los ojos del gato. También tendrán ojos INTERNOS.
+                Lo creamos ANTES del elemento de CIERRE del div cat-head obviamente, porque los OJOS son
+                PARTE de la CABEZA.
+                Creamos un div con la class cat-eyes. Dentro de cat-eyes, creamos DOS div, con las class 
+                cat-left-eye y cat-right-eye respectivamente. -->
+                <div class="cat-eyes">
+                    <div class="cat-left-eye">
+                        <!-- 12.- Dentro de aquí, cat-left-eye, creamos otro div con la class 
+                        cat-left-inner-eye --->
+                        <div class="cat-left-inner-eye"></div>
+                    </div>
+                    <div class="cat-right-eye">
+                    <!-- 13.- Dentro de aquí, cat-right-eye, creamos otro div con la class cat-right-inner-eye
+                    Es BIEN IMPORTANTE que los OJOS INTERNOS estén ANIDADOS DENTRO del div de OJO EXTERNO!!!!!,
+                    si no lo hacemos, NO SE VERÁN LOS CAMBIOS, debido a que este div, es contenido en el otro div. -->
+                        <div class="cat-right-inner-eye"></div>
+                    </div>
+                </div>
+                <!-- 14.- Ahora es momento de crear la nariz. Para esto, creamos un div con class cat-nose.
+                RECORDAR que lo tenemos que anidar ANTES de la etiqueta de cierre de cat-head o si no los cambios NO
+                SE VERÁN APLICADOS.-->
+                <div class="cat-nose"></div>
+                <!-- 15.- Ahora comenzaremos a trabajar con la boca. Habrá una línea derecha y una izquierda para la boca.
+                Creamos un div con class cat-mouth -->
+                <div class="cat-mouth">
+                    <!-- 16.- Dentro de nuestro cat-mouth creamos un div con la clase 
+                    cat-mouth-line-left y otro div con la class cat-mouth-line-right -->
+                    <div class="cat-mouth-line-left"></div>
+                    <div class="cat-mouth-line-right"></div> 
+                </div>
+                <!-- 17.- La última cosa en la que trabajaremos es en los bigotes. Va a haber 6 de ellos, lo que significa
+                que habrá 3 de ellos en cada lado.
+                Creamos un elemento div con la clase cat-whiskers-->
+                <div class="cat-whiskers">
+                    <!-- 18.- Dentro de cat-whiskers div, creamos DOS div con las clases 
+                    cat-whiskers-left y cat-whiskers-right -->
+                    <div class="cat-whiskers-left">
+                        <!-- 19.- Dentro del este div, que contendrá los bigotes izquierdos, creamos 3 elementos div con las 
+                        clases cat-whiskers-left-top, cat-whiskers-left-middle y cat-whiskers-left-bottom -->
+                        <div class="cat-whisker-left-top"></div>
+                        <div class="cat-whisker-left-middle"></div>
+                        <div class="cat-whisker-left-bottom"></div>
+                    </div>
+                    <div class="cat-whiskers-right">
+                        <!-- Creamos 3 div elements para los respectivos bigotes DERECHOS-->
+                        <div class="cat-whisker-right-top"></div>
+                        <div class="cat-whisker-right-middle"></div>
+                        <div class="cat-whisker-right-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 5.- El valor fixed para la propiedad position deja que dejemos FIJADO un elemento en la página
+            NO IMPORTA DÓNDE el usuario haga scroll en la página.
+            En este paso hicimos otro div para ver cómo trabaja fixed position
+            Creamos un div con class box.-->
+            <!-- 6.- Ahora como ya aprendimos sobre los diferentes valores de position, eliminamos el div con .box
+            Lo que haremos será transformarlo en un COMENTARIO.-->
+            <!--<div class="box"></div>-->
+
+        </main>        
+    </body>
+</html>

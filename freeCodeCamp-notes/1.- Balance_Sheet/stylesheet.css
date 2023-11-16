@@ -1,0 +1,295 @@
+/*1- comenzamos estableciendo el modelo de caja*/
+html {
+    box-sizing: border-box;
+}
+/*2.- Creamos un elemento body para asignar tipo de fuente
+y color de la letra*/
+body {
+    font-family: sans-serif;
+    color: #0a0a23;
+}
+/*3.- Antes de avanzar más, hacemos uso de la clase sr-only para
+hacer que estén completamente OCULTOS de la página visual, pero 
+sigan anunciándose por los lectores de pantalla
+Este CSS que escribimos es un CONJUNTO COMÚN de propiedades para
+asegurarnos que los elementos estén completamente OCULTOS visualmente*/
+/* Nota 1.- El selector que pusimos, seleccionará CUALQUIER SPAN cuyo class
+sea sr-only*/
+/* 4.- La propiedad clip se usa para definir la visibilidad de las partes de 
+un elemento.
+La propiedad clip-path determina la forma que la propiedad clip debe tomar*/
+/* 5.- Luego reducimos el tamaño de estos elementos, dándole width y height de 1px*/
+/* 6.- Para evitar que el contenido del texto se DESBORDE le damos a este selector 
+una propiedad overflow establecida en hidden y una propiedad white-space establecida
+en nowrap*/
+/* 7.- Por último sacamos estos elementos ocultos del FLUJO del documento. Aquí le damos
+a este selector una propiedad position establecida en absolute, un padding de 0 y un margin 
+de -1px esto asegurará que no solo sean invisibles, sino que ni siquiera estarán DENTRO de 
+la VISTA de la página*/
+/* !!!!!!19!!!!!!.-En vez de estar pendientes de no sobreescribir estas propiedades, 
+usamos la palabra clave !important para asegurar que nuestras propiedades SIEMPRE estén aplicadas
+SIN importar el ORDEN o la ESPECIFIDAD*/
+/*!!!!!!!!NOTA!!!!!!! AHORA QUE TENEMOS !important ELIMINAREMOS EL PSEUDO-SELECTOR NOT:SR-ONLY*/
+span[class~="sr-only"] {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    position: absolute !important;
+    padding: 0 !important;
+    margin: -1px !important;
+}
+/* 8.- Para darle estilo a la CABECERA, creamos un selector h1. Le dimos un selector h1, le 
+dimos un max-width de 37.25rem, un margin de 0 auto y un padding de 1.5rem 1.25rem*/
+h1 {
+    max-width: 37.25rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+}
+/* 9.- aputamos al contenedor flex con un selector h1 .flex y le dimos una propiedad display
+establecida en flex para habilitar el diseño flexbox. 
+Luego le dimos un flex-direction establecido en column-reverse. Esto mostrará los elementos
+anidados del fondo en la parte superior (invertimos el orden del TÍTULO Y EL SUBTÍTULO). 
+Por último establecimos gap en 1rem para crear algo de ESPACIO entre el TÍTULO y el SUBTÍTULO */
+h1 .flex {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+}
+/* 10.- El pseudo-selector :first-of-type se usa para apuntar al PRIMER elemento que coincida con el
+selector. Creamos un h1 .flex span:first-of-type para apuntar al PRIMER elemento SPAN en el
+contenedor .flex
+RECORDAR QUE LOS ELEMENTOS SPAN ESTÁN INVERTIDOS; POR LO QUE ESTE APARECERÁ COMO EL SEGUNDO ELEMENTO
+DE LA PÁGINA*/
+h1 .flex span:first-of-type {
+    font-size: 0.7em;
+}
+/* 11.- El pseudo-selector :last-of-type hace exactamente lo CONTRARIO. Creamos un selector
+h1 .flex span:last-of-type para apuntar al último span del contenedor flex. Le dimos un font-size más
+grande que el anterior para que se vea como un encabezado*/
+h1 .flex span:last-of-type {
+    font-size: 1.2em;
+}
+/* 12.- Hemos envuelto la tabla en un section, podemos estilizarla para darle un BORDE.
+Aquí creamos un selector section y le dimos un max-width de 40rem para un diseño ADAPTATIVO. Luego
+establecimos margin a 0 auto para CENTRARLO
+Luego establecimos border a 2px solid #d0d0d5*/
+section {
+    max-width: 40rem;
+    margin: 0 auto;
+    border: 2px solid #d0d0d5;
+}
+/* 13.- La última parte del encabezamiento son los años. Creamos un #years y HABILITAMOS FLEXBOX mediante
+display: flex;
+Luego ALINEAMOS el contenido HASTA EL FINAL de la dirección flex con 
+justify-content: flex;
+Luego lo FIJAMOS en la parte SUPERIOR con top: 0 AHORA LEER LA SIGUIENTE NOTA */
+/* Nota 2.- position: sticky; SIRVE para que un elemento se comporte como pegajoso o FIJO en relación al
+DESPLAZAMIENTO de la VENTANA GRÁFICA o de su CONTENEDOR PADRE. Lo que quiere decir que 
+el elemento SE MOVERÁ con el desplazamiento normal HASTA que alcance una posición ESPECÍFICA en la pantalla
+momento en el cual se quedará fijo en esa posición. Esta propiedad es especialmente ÚTIL para crear ENCABEZADOS,
+MENÚS DE NAVEGACIÓN, u otros elementos que deben permanecer visibles en la parte SUPERIOR o en algún lugar específico
+de la pagina mientras los usuarios AVANZAN en el contenido
+Generalmente se usa combinado con top, bottom, left o right para indicar dónde debería PEGARSE el elemento con relación
+a su contenedor o a la ventana gráfica  por ejemplo: 
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
+Ahora sí proseguimos: -------------------------------------------------------------------------------------------------*/ 
+/* 14.- Luego aplicamos color a #years dándole color al texto y color de fondo.*/
+/* 15.- La función calc() es una función CSS que nos permite calcular un valor basado en otros valores. 
+Por ejemplo, podemos CALCULAR el ANCHO del viewport menos el MARGEN de un elemento. */
+/* 16.- Al agregar la posición sticky el elemento se movió a su propia pila.
+Para asegurarnos de que el elemento #years no quede oculto por diferentes stacks agregamos una propiedad de
+z-index establecida en 999 */
+#years {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background: #0a0a23;
+    margin: 0 -2px;
+    padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0;
+    z-index: 999;
+}
+/* 16.- Aquí estilizaremos nuestro texto usando el selector #years span[class]. 
+La sintaxis span[class] apuntará a CUALQUIER  elemento span que tenga un ATRIBUTO CLASS, independientemente del
+valor del atributo */
+#years span[class] {
+    font-weight: bold;
+    width: 4.5rem;
+    text-align: right;
+}
+/* 17.- Envolvimos nuestras tablas en un div (contenedor) con clase table-wrap.
+Creamos un selector de clase y le dimos un padding */
+.table-wrap {
+    padding: 0 0.75rem 1.5rem 0.75rem;
+}
+/* 18.- Antes de dar más formato a la tabla, los elementos span están en negrita
+Creamos un selector span:not(.sr-only) y establecimos su font-weight en normal. 
+El PSEUDO-selector :not() se usa para apuntar a todos los elementos que no coincidan 
+con el selector, en ESTE CASO cualquier span que NO tenga clase sr-only 
+Esto nos asegura que las reglas anteriores para el selector span[class~="sr-only"] NO SE
+SOBREESCRIBAN
+En OTRAS palabras, apuntará a TODOS los span que NO tengan clase sr-only. Esto para que no
+se empalmen las otras reglas. POR LO QUE TODOS LOS SPAN CON CLASS DESCRIPTION CAMBIAN A 
+LETRA NORMAL EN VEZ DE NEGRITA*/
+/* 20.- !!!!!!!!!!!!!!!!!Como hemos agregado en el selector span[class~="sr-only"] la PALABRA CLAVE
+!important, ya no es necesario span:not(.sr-only) por lo que SOLAMENTE DEJAREMOS EL SELECTOR SPAN
+SIN PSEUDO.SELECTOR. */
+/* !!!!!!! 34.- Ahora que los elementos span tienen un estílo más específico, ELIMINAMOS la regla span 
+(en este caso la convertiremos en un comentario) !!!!!! */
+
+/*
+span {
+    font-weight: normal;
+}
+*/
+/*_____________________________________________________________________________________________________________________*/
+/* .-21 Creamos un selector table para apuntar a las tablas. Le establecimos una propiedad
+border-collapse en collapse, lo que permitirá que los bordes de las celdas se contraigan en UN SOLO 
+BORDE, EN LUGAR, de UN SOLO BORDE alrderdor DE CADA CELDA. 
+También le dimos borde de 0 */
+/* Nos aseguramos de que la tabla LLENE su contenedor(div) con una propiedad width establecida en 100%
+luego PARA POSICIONARLO RELATIVAMENTE, usamos la propiedad position establecida en relative y le dimos
+un margin top de 3rem */
+table {
+    border-collapse: collapse;
+    border: 0;
+    width: 100%;
+    position: relative;
+    margin-top: 3rem;
+}
+/* 22.- Estilizamos en este paso nuestros elementos caption para que parezcan MÁS ESTILIZADOS. 
+Creamos un selector table caption. configuramos el texto a color #356eaf, un tamaño (font-size) de 1.3em
+y un grosor normal (font-weight) */
+/* 23.- Ahora le damos a los SUBTÍTULOS una posición absoluta y los 
+movemos -2.25rem desde arriba (con la propiedad top) y 0.5 rem
+desde la izquierda. (con la propiedad left) 
+NOTA: La propiedad position la ACOMPAÑAMOS con top, left, right, bot, para ACOMODAR LA POSICIÓN*/
+table caption {
+    color: #356eaf;
+    font-size: 1.3em;
+    font-weight: normal;
+    position: absolute;
+    top: -2.25rem;
+    left: 0.5rem;
+}
+/* 24.- Cremaos un selector tbody td. Le dimos un ancho para rellenar el viewport (un width de 100vw)
+con un mínimo y máximo  de 4rem (max-width y min-width). Esto enfoque asegura que el width 
+esté fijado mientras que establecer el ancho específicamente permitiría que los elementos se encojan al contenedor */
+tbody td {
+    width: 100vw;
+    max-width: 4rem;
+    min-width: 4rem;
+}
+/* 25.- Apuntamos a los elementos th dentro del cuerpo de la tabla y les dimos un
+ancho de TODO el contenedor, menos 12rem
+Esto lo logramos con la siguiente sintaxis la cual ya trabajamos. Pero aquí la podemos
+ver más claramente.*/
+tbody th {
+    width: calc(100% - 12rem)
+}
+/* 26.- El selector [attribute="value"] apunta a CUALQUIER elemento que tenga un ATRIBUTO con un VALOR específico (los que tengan ese VALOR mas otra clase,
+NO SERÁN seleccionados por este selector).
+En este paso creamos un selector tr[class="total"] para apuntar a ESPECÍFICAMENTE lo elementos tr
+que contienen la CLASE total COMO ÚNICA CLASE, le dimos un borde inferior de 4px double #0a0a23 e hicimos la fuente NEGRITA*/
+/* !!!!NOTA IMPORTANTE!!!! El selector [class~="sr-only"] que contiene guíon curvado, busca este elemento, PERO QUE CONTENGA ADEMÁS DE ESA OTRAS CLASES.  
+El pseudo-selector que NO contiene guión curvado, sirve seleccionar elementos que solo TIENEN UNA SOLA CLASE EN ESPECÍFICO (aclaramos que pueden haber
+elementos que contengan la misma clase, pero además de esa, podrían tener más clases, este SELECTOR NO SELECCIONARÁ a esos elementos, solo a los
+que tengan esta CLASE en específico como ÚNICA clase).
+por ejemplo: 
+<span class="btn sr-only"> debe ser seleccionado con ~ para buscar elementos span con sr-only que contengan MÁS CLASES aparte de sr-only.
+<span class="sr-only"> deberíamos seleccionarlo en CSS con un pseudo-selector SIN ~ para que solamente busque ELEMENTOS con sr.only como su
+ÚNICA clase. */
+tr[class="total"] {
+    border-bottom: 4px double #0a0a23;
+    font-weight: bold;
+  }
+/* 27.- Usando la misma sintaxis del selector anterior, apuntamos a los elementos th dentro de las filas de nuestra tabla, donde class es total
+alineamos el texto a la izquierda, y les dimos un relleno de 0.5rem 0 0.25rem 0.5rem */
+/* NOTA!!! Si bien seguimos la MISMA sintaxis, es importante aclara que aquí, PARA ESPECIFICAR HIJOS, de elementos, debemos ponerlo LUEGO del
+pseudo-selector, de la siguiente manera: */
+tr[class="total"] th {
+    text-align: left;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+}
+/* 28.- Aquí nos explican nuevamente que tr[class="total"] solo selecciona elementos con total como su ÚNICA clase.
+otra forma de escribir este equivalente sería tr.total (todo junto) la DIFERENCIA es que con esta clase, podemos SELECCIONAR elemenentos ESPECÍFICOS que
+que sean HIJOS de class total, como de la siguiente manera */ 
+tr.total td {
+    text-align: right;
+    padding: 0 0.25rem;
+}
+/* 29.- El pseudo-selector :nth-of-type() se usa para apuntar a ELEMENTOS ESPECÍFICOS en FUNCIÓN de su ÓRDEN entre los HERMANOS del MISMO TIPO
+Usamos este pseudo-selector para apuntar al tercer elemento td dentro de las filas total de la tabla
+Le dimos un padding de 0.5rem
+!!!NOTA!!! apuntamos a un elemento en específico, poniéndolo luego de por ejemplo, los elementos tr que tienen clase total (tr.total) y luego el elemento
+al que queramos apuntar (td) y queda tr.total td:nth-of-type() 
+entre los parétesis va el NÚMERO que le corresponde al elemento en específico que queramos apuntar.*/
+tr.total td:nth-of-type(3) {
+    padding: 0.5rem;
+}
+/* 30.- Le dimos a nuestros elementos tr.total un efecto hover que CAMBIA el fondo a #99c9ff CADA VEZ que pasamos el MOUSE por encima. */
+tr.total:hover {
+    background: #99c9ff;    
+}
+/* 31.- Seleccionamos los ELEMENTOS td con CLASS establecido en CURRENT e hicimos la fuente cursiva (italic) */
+td.current {
+    font-style: italic;
+  }
+/* 32.- Seleccionamos los elementos tr con class data y les dimos una imagen de fondo de 
+linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem) */ 
+tr.data {
+    background: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+}
+tr.data th {
+    text-align: left;
+    margin: 0.3rem 0 0 0;
+    padding: 0.3rem 0 0 0.5rem;
+}
+/* 33.- Creamos un selector tr. th .description 
+Este selector apunta a los elementos con class establecido en DESCRIPTION que están DENTRO de los th en las filas 
+de la tabla .data
+Les dimos una visualización de bloque e hicimos el texto en cursiva con grosor NORMAL, le pusimos padding ESPECÍFICO
+y un MARGEN DERECHO también ESPECÍFICO
+Estos valores ESPECÍFICOS alinearon todos los elementos de la tabla EN SU LUGAR, (bueno, CASI)*/
+tr.data th .description {
+    display: block;
+    font-style: italic;
+    font-weight: normal;
+    padding: 1rem 0 0.75rem;
+    margin-right: -13.5rem;
+}
+/* 35.- Nuestro importe en dólares estába DESALINEADO. Así que creamos un selector que apunte a los elementos td 
+dentro de los elementos tr.data
+Alineamos el texto VERTICALMENTE en la parte SUPERIOR (con VERTICAL-ALIGN), 
+HORIZONTALMENTE alineamos el texto a la DERECHA (con TEXT-ALIGN) 
+Y le establecimos un RELLENO ESPECÍFICO.
+
+!!!!!NOTA!!!!! Cuando se nos PIDE alinear VERTICALMENTE, usaremos vertical-align,
+cuando nos piden alinear HORIZONTALMENTE, usaremos el ALIGN correspondiente para el elemento en cuestión
+(text-alig, item-lign, etc)
+TAMBIÉN EXISTE: vertical-align: text-top; PERO PARA ESTE CASO NOS PIDEN SOLAMENTE TOP (no text-top) aunque
+el resultado en ESTE CASO, sería lo mismo poner text-top o solo top (ya que solo es texto). */
+
+tr.data td {
+    vertical-align: top;
+    text-align: right;
+    padding: 0.3rem 0.25rem 0; 
+}
+/* 36.- Creamos otro selector para los elementos td dentro del elemento tr.data pero ESPECÍFICAMENTE para el 
+ÚLTIMO. Le dimos un relleno derecho de 0.5rem
+En este caso, como NO NOS INDICAN el número EXACTO, usamos tr.data td:last-of-type en vez de 
+tr.total td:nth-of-type() ya que NO nos especificaron el número y nos dicen explícitamente EL ÚLTIMO. */
+tr.data td:last-of-type {
+    padding-right: 0.5rem;
+}
+
+/* LISTO HEMOS TERMINADO NUESTRO BALANCE FINANCIEROO!! :D*/

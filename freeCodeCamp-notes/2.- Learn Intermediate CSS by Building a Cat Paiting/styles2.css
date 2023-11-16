@@ -1,0 +1,388 @@
+/* 1.- Usamos el selector universal (*) para añadir
+box-sizing: border-box; a nuestro CSS. Esto asegura que los elementos
+incluyan padding y border en sus width y height especificados*/
+* {
+    box-sizing: border-box;
+}
+/* 2.- Le dimos a nuestro body element un background-color ESPECÍFICO*/
+body {
+    background-color: #c9d2fc;
+}
+/* 3.- Le damos a .cat-head element un widht de 205px y un
+height de 180px. También, le dimos un border de 1px solid #000
+y un border-radius de 46% 
+!!!NOTA!!! Este border-radius de 46% creará un círculo (no perfecto, perfecto
+sería de 50%)*/
+/* 4.- Para ver el elemento cat-head, le dimos un linear gradient background con
+#5e5e5e 85% y #45454f 100%
+Cabe resaltar que nos pidieron LINEAR GRADIENT (ya que no especificaron) en vez de 
+radial-gradient */
+/* POSICIONES CSS*/
+/* 5.- CSS positioning te permite establecer como quieres que un elemento esté 
+posicionado en el navegador. Podemos establecer la propiedad position en: 
+static, absolute, relative, sticky o fixed.
+Una vez que establecimos position, podemos mover el elemento configurándolo
+a través de las propiedades top, right, left o bottom en pixeles o en un valor porcentual.
+static es la posición por default de todos los elementos. Si la asignamos a un elemento,
+seremos capaces de moverlo con top, right, left o bottom 
+Le asignamos propiedad statick a .cat-head y la movimos con top y left en 100px.*/
+/* 6.- Vimos que nada cambió al aplicar el paso anterior. Esto es porque lo hicimos bajo STATIC.
+Cuando USAMOS relative positioning entonces ahí sí, activaremos las propiedades top, right, 
+bottom and left.
+ES IMPORTANTE ACLARAR, que cuando establecemos la propiedad position en relative, el elemento
+CONTINÚA en su lugar original (el de static) o sea en el flujo NORMAL del documento, 
+pero top, bottom, left y right sí se activarán.*/
+/* 7.- El siguiente valor que veremos para position es absolute. Cuando usamos este valor, el
+elemento es sacado del FLUJO NORMAL del documento, y su posición es determinada por top, right,
+bottom y left.
+En este paso establecimos la propiedad en absolute.*/
+/* 9.- Ahora reemplazamos el valor de position con fixed y dejamos top y left como están.*/
+/* 10.- El último valor de position que veremos es sticky. El valor sticky is un HÍBRIDO 
+de RELATIVE y de FIXED. Permite a un elemento pegarse (sticky) a una posición específica DENTRO 
+de su elemento CONTENEDOR o el viewport, basado en la posición del scroll. 
+En este paso, cambiamos el valor de position de fixed a sticky. 
+También cambiamos el top de 100px a 0. Luego REMOVIMOS left.*/
+/* 11.- Ahora CENTRAMOS la cabeza del gato.
+Le damos a .cat-head una position de absolute.
+Seleccionamos un valor de 0 para right, left, top, bottom. 
+Luego establecimos su margin en auto
+Esta es una FORMA de CENTRAR un elemento VERTICAL y HORIZONTALMENTE, usando CSS positioning*/
+.cat-head {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 205px;
+    height: 180px;
+    border: 1px solid #000;
+    border-radius: 46%;
+    background:  linear-gradient(#5e5e5e 85%, #45454f 100%);
+}
+/* 8.- El valor fixed para la propiedad position deja que dejemos FIJADO un elemento en la página
+NO IMPORTA DÓNDE el usuario haga scroll en la página
+Usamos un selector .box con 200px de width, 600px de height y un background-color de #000. También
+Le dimos un position de absolute, un top de 800px, y un left de 650px */
+/* 12.- Como ya conocimos los diferentes valores de position, ahora eliminamos esta regla de CSS para 
+.box. Lo que haremos será TRANSFORMARLO EN UN COMENTARIO.
+
+.box {
+    width: 200px;
+    height: 600px;
+    background-color: #000;
+    position: absolute;
+    left: 650px;
+    top: 800px;
+}
+*/
+/* 13.- Vamos a hacer cada oreja como un triángulo.
+Usando un class selector, de dimos a .cat-left-ear element un borde izquierdo y derecho 
+de 35px solid transparent, también establecimos el border bottom a 70px solid #5e5e5e. 
+
+!!!!NOTA!!! cuando vamos a establecer propiedades como color al borde, es mejor ponerlos
+por separado, (border-left, border-bottom, etc) ya que no funcionará con LA PROPIEDAD 
+ABREVIADA!!
+*/
+/* 14.- Movemos la oreja izquierda a su posición estableciendo una position absolute y 
+un top de -26px y un left de -31px*/
+/* 15.- Los bordes quedaron demasiados afiliados para ser una oreja; así que establecimos  
+border-top-left-radius en 90px y el border-top-right-radius en 10px Esto suavizará los
+contornos */
+/* 16.- Para posicionar la oreja izquierda apropiadamente, podemos usar CSS transform para 
+rotarla en cierto grado.
+La propiedad transform permite modificar la forma, posición, y el tamaño de un elemento SIN CAMBIAR
+el diseño, o afectar los elementos circundantes. Tiene funciones como translate(), rotate(),
+scale(), skew() y matrix()
+Establecimos la propiedad transform a rotate(-45deg). 
+CON ESTO LA OREJA SE HA COLOCADO EN EL ÁNGULO CORRECTO */
+/* 21.- Las orejas deberían siempre estar ubicadas arriba de la cabeza que se superponen.
+Podemos hacer esto con z-index property
+z-index is una propiedad que podemos usar para definir el orden de superposición de los elementos HTML.
+Cualquier elemento con un z-index mayor, siempre estará posicionado encima de un elemento con un z-inder menor.
+Para poder apreciar esto, le dimos a z-index un valor de -1.
+Esto hizo que que la oreja se posicionara POR DEBAJO de la cabeza.(z-index: -1;)*/
+/* 22.- Ese no es el comportamiento que queremos, deberíamos hacer que las orejas se muestren SOBRE la cabeza 
+para que NO se vean los bordes que se superponen en ella.
+En lugar de -1 le damos a index un valor de 1.
+Esto hace que la oreja se muestro SOBRE la cabeza*/
+
+.cat-left-ear {
+    position: absolute;
+    top: -26px;
+    left: -31px;
+    z-index: 1;
+    border-top-left-radius: 90px;
+    border-top-right-radius: 10px;
+    transform: rotate(-45deg);
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 70px solid #5e5e5e;    
+}
+/* 17.- Ahora podemos trabajar con la oreja derecha. Creamos un selector acorde a nuestro div html, y le dimos
+un borde izquierdo y derecho de 35px solid transparent a cada uno.
+También establecimos el border-bottom en 70px solid #5e5e5e */
+/* 18.- Movimos la oreja derecha a su posición con position establecida en absolute con top de -26px,
+y left de 136px*/
+/* 19.- Le damos una rotación de 45 grados*/
+/* 20.- Ahora removemos los bordes afilados estableciendo como en la oreja izquierda, un
+border-top-left-radius en 90px y un border-top-right-radius en 10px */
+/* 23.- Establecimos aquí también el z-index en 1 para que la oreja derecha siempre se quede sobre la cabeza*/
+.cat-right-ear {
+    position: absolute;
+    top: -26px;
+    left: 163px;
+    z-index: 1;
+    transform: rotate(45deg);
+    border-top-left-radius: 90px;
+    border-top-right-radius: 10px;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 70px solid #5e5e5e;
+}
+/* 24.- La mayoría de los gatos tienen diferentes colores en sus orejas externas e internas. 
+Podemos implementar esto también. Eso es porque definimos un div element para ambas orejas internas.
+Usando un class selector le dimos a .cat-left-inner-ear un borde izquierdo y derecho establecido en
+20px solid transparent a cada uno.
+También le dimos un border-bottom de 40px solid #3b3b4f 
+Esto hizo la punta de la oreja de color gris oscuro.*/
+/* 25.- Movimos la oreja interna izquierda a su posición con una propiedad position establecida en 
+absolute,
+un top de 22px y un left de -20px 
+Esto movió el triángulo de estar ENCIMA DE LA OREJA a estar DENTRO de la oreja izquierda :D*/
+/* 26.- Para remover todos los bordes punteados de la oreja interna, establecemos un bottom-right, 
+y un bottom-left border radius en 40% cada uno, 
+Y un top-left border radius de 90px y un top-right border radius de 10px */
+.cat-left-inner-ear {
+    position: absolute;
+    top: 22px;
+    left: -20px;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 90px;
+    border-top-right-radius: 10px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #3b3b4f;
+}
+ /* 27.- Ahora trabajaremos con la oreja izquierda. 
+ Usando un selector class, le dimos a nuestro div cat-right-inner-ear un borde izquierdo y derecho
+ de 20px solid transparent. También le dimos un border-bottom de 40px solid #3b3b4f */
+/* 28.- Movimos la oreja interna a SU POSICIÓN con una propiedad position 
+establecida en absolute, con top de 22px y un left de -20px 
+Esto hizo que la oreja INTERNA derecha se acomodara DENTRO de la oreja externa*/
+/* Como hicimos para la oreja interna izquierda, removimos los bordes afilados estableciendo un 
+bottom-left y bottom-right border radius de 40%, un top-left border radius de 90px y un
+top-right border radius de 10px*/
+.cat-right-inner-ear {
+    position: absolute;
+    top: 22px;
+    left: -20px;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 90px;
+    border-top-right-radius: 10px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #3b3b4f;
+}
+/* 29.- Ahora que hemos creado los div correspondientes para los ojos...
+Usando un selector de clase, le damos a nuestro .cat-left-eye un width de 30px
+y un height de 40px. Tambiénm le dimos un background-color de #000*/
+/* 30.- Movemos el ojo izquierdo con una propiedad position establecida en absolute,}
+con top de 54px, y un left de 39px*/
+/* 31.- Para hacer que el ojo izquierdo luzca como un ojo :v le damos un border radius 
+de 60%
+También, usando una propiedad transform lo rotamos a 25degrees */
+.cat-left-eye {
+    position: absolute;
+    top: 54px;
+    left: 39px;
+    border-radius: 60%;
+    transform: rotate(25deg);
+    width: 30px;
+    height: 40px;
+    background-color: #000;
+}
+/* 32.- Ahora trabajaremos con el ojo derecho, usando el mismo enfoque.
+Usando un selector class, le dimos a .cat-right-eye un width de 30px, 
+y un height de 40px.
+También le dimos un background-color de #000*/
+/* 33.- Movimos el ojo derecho a SU POSICIÓN, con una propiedad position establecida en
+absolute, un top de 54px y un left de 134px*/
+/* 34.- Para hacer que el ojo derecho luzca como un ojo, le damos un border radius de 60%,
+También, usando una propiedad transform, lo rotamos -25deg */
+.cat-right-eye {
+    position: absolute;
+    top: 54px;
+    left: 134px;
+    border-radius: 60%;
+    transform: rotate(-25deg);
+    width: 30px;
+    height: 40px;
+    background-color: #000;
+}
+/* 35.- Ahora ambos lucen como ojos, pero podemos hacerlos mejores. Es por eso que creamos unos 
+div de ojos internos.
+Usando un class selector, le damos a nuestro .cat-left-inner-eye un width de 10px y un height de 
+20px.
+También le dimos un background-color de #fff*/
+/* 36.- Movimos el ojo interno izquierdo a sú posición, con una propiedad 
+position establecida en absolute, un top de 8px y un left de 2px
+También le dimos un border-radius de 60% y un transform de rotate 10deg */
+.cat-left-inner-eye {
+    position: absolute;
+    top: 8px;
+    left: 2px;
+    border-radius: 60%;
+    transform: rotate(10deg);
+    width: 10px;
+    height: 20px;
+    background-color: #fff;
+}
+/* 37.- Usando un selector class, le dimos a nuestro .cat-right-inner-eye un 
+width de 10px y un height de 20px.
+También le dimos un background-color de #fff*/
+/* Movemos el ojo interno derecho a SU posición con una propiedad 
+position establecida en absolute, un top de 8px y un left de 18 px.
+También le dimos un border-radius de 60% y un transform con rotate de .5deg*/
+.cat-right-inner-eye {
+    position: absolute;
+    top: 8px;
+    left: 18px;
+    border-radius: 60%;
+    transform: rotate(-5deg);
+    width: 10px;
+    height: 20px;
+    background-color: #fff;
+}
+/* 38.- Ahora, usando un selector class para nuestro div cat-nose le damos un
+un left y un right border de 15px solid transparent a cada uno. 
+También le dimos un border-bottom de 20px solid #442c2c*/
+/* 39.- Movemos la nariz a su posición con una propiedad position en absolute,
+un top de 108px, y un left de 85px*/
+/* 40.- Removemos los bordes afilados de la nariz con un border-radius top-left,
+bottom-right y bottom-left de 50%.
+También le dimos un transform de rotate de 180deg*/
+.cat-nose {
+    position: absolute;
+    top: 108px;
+    left: 85px;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    transform: rotate(180deg);
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 20px solid #442c2c;
+}
+/* 41.- Usando un selector DESCENDENTE, seleccionamos los DOS div con class cath-mout.
+Les dimos un width de 30px, un height de 50px, y un border de 2px solid #000*/
+/* NOTA, EL SELECTOR  lo INTENTAMOS hacer con ">" pero NO NOS PERMITIÓ. 
+Esto se DEBE A que .cat-mouth div { y .cat-mouth > div { SON DIFERENTES.
+.cat-mouth div { Selecciona a TODOS los elementos DIV dentro de .cat-mouth
+.cat-mouth div > { SOLAMENTE selecciona a los HIJOS DIRECTOS de .cat-mouth*/
+/* 42.- Ahora vamos a hacer las DOS lineas de la BOCA en una forma elíptica.
+Le damos a este selector, un border color de black transparent transparent transparent,
+y un border radius de 190%/190px 150px 0 0*/
+    .cat-mouth div {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #000;
+    border-color: black transparent transparent transparent;
+    border-radius: 190%/190px 150px 0 0;
+}
+/* 43.- Usando un selector de clase, le dimos a nuestro .cat-mouth-line-left una propiedad
+position establecida en absolute, un top de 88px y un left de 74px. 
+Esto lo movió a la posición correcta*/
+/* 44.- Usando transform lo rotamos 170deg */
+.cat-mouth-line-left {
+    position: absolute;
+    top: 88px;
+    left: 74px;
+    transform: rotate(170deg);
+}
+/* 45.- Accedemos a nuestro .cat-mouth-line-right con un selector.
+Luego lo movimos en su posición correcta con un position establecido en absolute,
+luego un top de 88px y un left de 91px */
+/* 46.- Luego lo rotamos con transform a 165 deg*/
+.cat-mouth-line-right {
+    position: absolute;
+    top: 88px;
+    left: 91px;
+    transform: rotate(165deg);
+}
+/* 47.- Ahora, usamos un selector descendente para apuntar apuntar los 3 elementos div DENTRO
+de cat-whiskers-left Con esto seleccionaremos a nuestros tres bigotes, dentro del div bigotes izquierdos. 
+Les dimos un width de 40px, un height de 1px y un background-color de #000  */
+.cat-whiskers-left div {
+    width: 40px;
+    height: 1px;
+    background-color: #000;
+}
+/* 48.- Ahora, como hicimos en los pasos previos, usamos un selector DESCENDENTE para APUNTAR a los 3 div
+elements DENTRO de nuestro .cat-whiskers-right. Esto apuntará a los 3 bigotes de la derecha.
+Les dimos width de 40px, un height de 1px y un background-color de #000*/
+.cat-whiskers-right div {
+    width: 40px;
+    height: 1px;
+    background-color: #000;
+}
+/* 49.- Es hora de acomodar nuestros bigotes izquierdos UNO POR UNO. Usando un selector 
+.cat-whisker-left-top lo movemos a su posición correspondiente con una propiedad 
+position establecida en absolute, un top de 120px y un left de 52px*/
+/* 50.- Luego lo rotamos 10 grados*/
+.cat-whisker-left-top {
+    position: absolute;
+    top: 120px;
+    left: 52px;
+    transform: rotate(10deg);
+}
+/* 51.- Usando un selector que apunte al bigote izquierdo medio, lo movimos a su posición correspondiente
+usando una position establecida en absolute, un top de 127px y un left de 52px*/
+/* 52.- Luego lo rotamos 3 grados*/
+.cat-whisker-left-middle {
+    position: absolute;
+    top: 127px;
+    left: 52px;
+    transform: rotate(3deg);
+}
+/*  53.- Ahora usamos un selector correspondiente para nuestro bigote izquierdo inferior y lo movemos a 
+su correcta posición  con una position establecida en absolute, un top de 134px y un left de 52px*/
+/* 54.- Lo rotamos -3 grados*/
+.cat-whisker-left-bottom {
+    position: absolute;
+    top: 134px;
+    left: 52px;
+    transform: rotate(-3deg);
+}
+/* 55.- Ahora trabajaremos con los bigotes de la DERECHA, acomodándolos uno por uno.
+Usamos primeramente un selector para nuestro bigote superior derecho y le dimos una
+position establecida en absolute, un top de 120px y un left de 109px*/
+/* 56.- Luego lo rotamos -10 grados*/
+.cat-whisker-right-top {
+    position: absolute;
+    top: 120px;
+    left: 109px;
+    transform: rotate(-10deg);
+}
+/* 57.- Ahora usamos una selector para nuestro bigote medio derecho y lo movemos a su 
+posición correspondiente dándole una position establecida en absolute, un top de 127px 
+y un left de 109px*/
+/* 58.- ahora rotamos el bigote -3grados */
+.cat-whisker-right-middle {
+    position: absolute;
+    top: 127px;
+    left: 109px;
+    transform: rotate(-3deg);
+}
+/* 59.- Ahora usamos un selector que apunte a nuestro bigote inferior derecho y lo movemos a su
+posición correspondiente estableciéndole un position en absolute, un top de 134px y un
+left de 109px*/
+/* 60.- Ahora lo rotamos 3grados y con este paso TERMINAMOS :D nuestra pintura de gato.*/
+.cat-whisker-right-bottom {
+    position: absolute;
+    top: 134px;
+    left: 109px;
+    transform: rotate(3deg);
+}

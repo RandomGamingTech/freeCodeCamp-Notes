@@ -1,0 +1,63 @@
+<!-- 1.- Comenzamos con una DECLARACIÓN !DOCTYPE y agreganmos una
+estrctura básica html.
+Establecimos el idioma de la página a inglés y pusimos un title de Piano-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Piano</title>
+        <!-- 2.- Agregamos DOS etiquetas meta, una para OPTIMIZAR la página para 
+        dispositivos móviles y una para el charset-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- 8.- Ahora agregamos un elemento link para vincular la hoja de estilos CSS con
+        nuestro documento html. 
+        Establecimos un link con rel en stylesheet y un href de ./styles3.css -->
+        <link rel="stylesheet" href="./styles3.css">
+    </head>
+    <body>
+        <!-- 3.- Para comenzar a a trabajar, comenzamos creando un elemento
+        div con un id establecido en piano-->
+        <div id="piano">
+            <!-- 4.- Anidamos un segundo div dentro de #piano y le establecemos 
+            un class de keys-->
+                <!-- 9.- Agregaremos el logo de freeCodeCamp. 
+                Antes del elemento .keys, agregamos un img con una class logo. Establecemos
+                su valor con un link específico, le damos un texto nuestro alt de freeCodeCamp Logo -->
+            <img class="logo" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp Logo">
+            <div class="keys">
+                <!-- 5.- Dentro de .keys agregamos SIETE elementos div. Les dimos
+                a TODOS la clase key-->
+                <!-- 6.- Recordemos que un atributo CLASS puede tener VARIOS valores. 
+                Para separar nuestras teclas blancas de las negras, agregamos un SEGUNDO
+                VALOR class la cuál fue black--key. Agregamos esto a nuestro
+                SEGUNDO, TERCER, QUINTO Y SÉPTIMO .key
+                !!!NOTE!! Recuerda que para agregar VARIAS CLASES a un MISMO ELEMENTO, debemos
+                de poner las demás clases separadas con UN ESPACIO entre las MISMAS COMILLAS que
+                YA hemos abierto para class-->
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <!-- 7.- Ahora COPIAMOS el conjunto anterior de div .key y lo pegamos DOS VECES dentro de #keys-->
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+                <div class="key black--key"></div>
+            </div>
+        </div>
+    </body>
+
+</html>

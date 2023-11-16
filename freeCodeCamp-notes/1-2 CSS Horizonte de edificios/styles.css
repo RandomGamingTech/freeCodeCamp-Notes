@@ -1,0 +1,397 @@
+/* 1.- Agregamos un selector all (*) y le dimos un border de 1px solid black 
+    Esto es un truco que nos permite visualizar dónde están los elementos y su tamaño. Lo
+    eliminaremos más tarde.*/
+/* 2.- También agregamos un box-sizing de border-box a todo. Esto hará que el borde que agregamos
+    no agregue ningún tamaño adicional a los elementos*/
+
+/* 17.- Las variables color2 y color3 declaradas en .bb1 no funcionaron porque NO CAEN en CASCADA a los elementos hermanos .bb2 y .bb3
+    Así es como funciona CSS, debido a esto, las variables a MENUDO se declaran en el SELECTOR :root
+    Este selector es el de nivel MÁS ALTO en CSS; Poner nuestras variables allí, las hará utilizables en TODAS PARTES. Agregamos el
+    selector :root a la parte superior de la hoja de estilos y movimos TODAS las declaraciones de variables aquí.*/
+
+/* 18.- Creamos otra variable llamada --building-color4 y le asignamos un valor de #538cc6. Luego lo usamos para rellenar el ÚLTIMO edificio*/    
+
+/* 27.- Creamos una nueva variable en :root llamada --window-color1 y le asignamos un valor de black. Este valor será un color secundario para los edificios MORADOS*/
+
+/* 36.- Creamos una nueva variable en root denominada window-color2 con valor de #8cd9b3. Esto se usará como el COLOR SECUNDARIO para este edificio*/
+
+/* 45.- Vamos a crear el siguiente edificio. Creamos una variable llamada --window-color3 en :root y le asignamos un valor de #98cb3. Este será el color secundario para los 
+    edificios rosas.*/
+
+/* 52.- Creamos una nueva variable llamada --window-color4 y le asignamos un valor de #8cb3d9. Este será el color secundario para el ÚLTIMO edificio de fondo.*/
+
+:root {
+    --building-color1: #aa80ff;
+    --building-color2: #66cc99;
+    --building-color3: #cc6699;
+    --building-color4: #538cc6;
+    --window-color1: black;
+    --window-color2: #8cd9b3;
+    --window-color3: #d98cb3;
+    --window-color4: #8cb3d9;
+}
+
+* {
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+/* 3.- El cuadrado más interno que se ve gracias al borde general, es el body. El cuadrado exterior es el elemento
+    html. En este paso hacemos que nuestro body llene TODO el viewport, dándole un height de 100vh.
+    
+    Luego, eliminamos el margin predeterminado de body, estableciendo el margin en 0. Finalmente establecemos la propiedad
+    overflow en hidden para ocultar las barras de desplazamiento que aparecen cuando algo se extiende más allá de la ventana gráfica.*/
+body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* 4.- Asignamos a nuestro elemento .background-buildings un width y un height de 100% para convertirlo en el ANCHO y ALTO de su PADRE
+    body*/
+
+/* 13.- Los edificios están actualmente apilados UNO EN CIMA DEL OTRO. Alineamos los edificios convirtiendo el elemento .background-buildings en un PADRE
+    flexbox (display flex). Usamos las propiedades align.items y justify-content para ESPACIAR UNIFORMEMENTE los edificios (justify-content: space-evenly;) en la parte INFERIOR (align-items: flex-end) del elemento.*/
+
+/* 23.- Para optimizar el código, movemos las propiedades y valores position y top de .foreground-buildings a .background-buildings (top y position) y luego reutilizamos estas propiedades para foreground-buildings. 
+    Para esto, usamos un selector múltiple separado con , (background-buildings, foreground-buildings)*/
+
+.background-buildings, .foreground-buildings {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+/* 5.- Asignamos al div .bb1 un width de 10% y un height de 70% */
+
+/* 7.- Centramos las partes del edificio convirtiendo el elemento .bb1 en un elemento primario flexbox (display: flex;).
+    Luego usamos las propiedades flex-direction y align-items para centrar los elementos secundarios.
+    las establecimos en column (para que se sobrepongan una sobre otra) y align items en center para que se centrara cada sección*/ 
+/* 8.- Ahora que se va pareciendo la forma a un edificio, estamos listos para crear nuestra primera VARIABLE.
+    Las declaraciones de variables comienzan con dos guines -- y se les asigna un nombre de valor como este: --variable-name: value;
+    En la regla de la clase bb1, creamos una variable denominada --building-color1 y le asignamos un valor de #999 */
+
+/* 9.- Ahora cambiamos el valor de #999 a #aa80ff y podremos ver cómo se aplica en todos los lugares donde usamos la variable. Esta es la ventaja
+    principal de usar variables, pudiendo cambiar rápidamente muchos valores en la hoja de estilo.*/
+
+/* 14.- Creamos una nueva variable debajo de nuestra variable --building-color1. Le asignamos un nombre a la nueva variable de --building-color2
+    y le asignamos un valor de #66cc99. Luego lo configuramos como el background-color de bb2*/    
+
+/* 16.- Creamos una variable debajo de las otras llamadas --building-color3 y le asignamos un valor de #cc6699. Luego lo usamos como background-color para
+    .bb3 y le asignamos un valor de reserva de pink*/
+
+/* 50.- Deseamos que bb4 comparta las propiedades de bb1 que centran las secciones. En lugar de duplicar ese código, creamos una nueva clase llamada 
+        building-wrap. La dejaremos vacía por ahora. Esta clase se usará en algunos lugares para ahorrarnos algo de codificación.*/
+
+/* 51.- Movemos las propiedades display, flex-direction y align-items de bb1 a la nueva clase de building-wrap*/
+
+.building-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 54.- Las ventanas están apiladas UNA ENCIMA DE LA OTRA a la IZQUIERDA de la sección, detrás del edificio púrpura. 
+        Agregamos una nueva clase debajo de .building-wrap llamada window-wrap. Convertimos la clase window-wrap en un contenedor flexbox (display flex)
+        y usamos las propiedades align-items (center) y justify content (space-evenly) para CENTRAR sus elementos secundarios VERTICALMENTE y espaciarlos UNIFORMEMENTE*/
+
+.window-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.bb1 {
+    /*display: flex;
+    flex-direction: column;
+    align-items: center; VER PASO 51 */
+    width: 10%;
+    height: 70%;
+}
+
+/* 6.- Proporcionamos a cada div dentro de bb1, un width y un height con los siguientes valores:
+    70% y 10% a bb1a, 80% y 10% a bb1b, 90% y 10% a bb1c y 100% y 70% a bb1d. Recordar que estos porcentajes
+    son RELARIVOS AL PADRE y las alturas sumarán hasta el 100%, llenando verticalmente el contenedor*/  
+
+/* 10.- Para usar una variable COMO VALOR, ponemos el nombre de la variable entre paréntesis con var delante de ellos, de esta manera: 
+    var(--building-color1). Cualquier valor que hayamos asignado a la variable ANTERIORMENTE, se aplicará a CUALQUIER propiedad en la que la usemos.
+    Agregamos la variable --building-color1 que creamos en el paso anterior como el valor de la propiedad background-color de la clase .bb1a*/    
+
+/* 11.- Usamos la misma variable para dar valor a background-color en las demás secciones del edificio.*/
+
+/* 28.- Los degradados en CSS son una forma de transición entre colores a lo largo de la distancia de un elemento. Se aplican a la propiedad background y la sintaxis se ve así:
+    
+    gradient-type(
+        color1,
+        color2
+    ); 
+    
+        En el anterior ejemplo, color1 es sólido en la parte superior, color2 es sólido en la parte inferior y en el medio pasa uniformemente de uno a otro. En .bb1a agregamos
+            una propiedad background DEBAJO de la PROPIEDAD background-color. Lo establecemos como un degradado de tipo linear-gradient que usa --building-color1 como el primer color y 
+                --window-color1 como el segundo
+            Aquí SOLAMENTE tuvimos que sar las dos variables indicadas para darle a background un color. USAMOS UN LINEAR-GRADIENT para esto...*/
+
+/* 29.- Deseamos agregar el mismo degradado a las siguientes dos secciones. En lugar de hacer eso, creamos un nuevo selector de clase llamado bb1-window y movemos las propiedades y valores height
+    y background de .bb1a al NUEVO SELECTOR de clase*/
+
+/* 30.- Ahora no necesitaremos las propiedades height o background-color en bb1a, bb1b o bb1c, así que los eliminamos. (los convertimos en comentarios)*/
+
+.bb1-window {
+    height: 10%;
+    background: linear-gradient(var(--building-color1),var(--window-color1))
+}
+
+.bb1a {
+    width: 70%;
+    /*background-color: var(--building-color1);*/
+}
+
+.bb1b {
+    width: 80%;
+    /*height: 10%;*/
+    /*background-color: var(--building-color1);*/
+}
+
+.bb1c {
+    width: 90%;
+    /*height: 10%;*/
+    /*background-color: var(--building-color1);*/
+}
+
+/* 31.- Los degradados pueden usar tantos colores como nosotros queramos. Agregamos un linear-gradient a .bb1d con orange 
+    como el primer color, --building-color1 como el segundo color y --window-color1 como el tercero. Recordemos usar el degradado en la propieda
+    background (aquí es donde va)*/
+
+/* 32.- Está un poco escondido detrás de los edificios en primer plano, pero podemos ver el degradado de tres colores. Como lo está usando ahora, eliminamos background-color de .bb1d
+    (lo transformamos en comentario)*/
+
+/* 33.- Podemos especificar dónde deseamos que se complete una trancisión de degradado agregándolo al color de la siguiente manera: 
+    linear-gradient(color1, color2 20%, color 3) 
+    En el ejemplo anterior asignamos trancisiones de porcentajes a los colores de la siguiente manera: color 1 a 2 entre 0% y 20% del elemento y luego pasará a color 3 para el resto. 
+    
+    Agregamos en este paso 80% al color --building-color1 del degradado de .bb1d para que podamos verlo en acción.*/
+
+/* 34.- Eliminamos orange del degradado de .bb1d y cambiamos el 80% a 50%. Esto hará que --building-color1 sea SÓLIDO para la MITAD SUPERIOR y luego pasará a --window-color1 para la mitad inferior.*/
+    
+.bb1d {
+    width: 100%;
+    height: 70%;
+    /*background-color: var(--building-color1);*/
+    background: linear-gradient(var(--building-color1) 50%, var(--window-color1));
+}
+
+/* 12.- Ahora establecemos un width y height a los nuevos edificios de: 
+    10% y 50% para .bb2, 10% y 55% para .bb3 y 11% y 58% para .bb4. 
+    En este proyecto usaremos casi todas las unidades basadas en porcentajes y algunos flexbox
+    por lo que todo será completamente ADAPTABLE*/
+
+/* 15.- Como el paso 14 no funcionó (intentamos establecer el color del background con la variable --build-color2), debemos
+    AGREGAR un VALOR DE RESERVA a una variable, poniéndolo como el segundo valor donde se usa la variable de esta manera: 
+    var(--variable-name, fallback-value). La propiedad usará el valor de reserva cuando haya un problema con la variable. La 
+    propiedad usará el valor de RESERVA cuando haya un PROBLEMA con la VARIABLE.
+    Establecemos green como valor de reserva al background-color de bb2 */    
+
+/* 19.- Ahora que hemos solucionado los errores de las variables, podemos borrar los valores de reserva green y pink de nuestras variables.*/    
+
+/* 39.- En los siguientes pasos usaremos algunos trucos con BORDES CSS para CONVERTIR la sección bb2a en un TRIÁNGULO en la parte superior del edificio.
+        Primero eliminamos el background-color de bb2, ya que no lo necesitamos (lo convertimos en un comentario)*/
+
+.bb2 {
+    width: 10%;
+    height: 50%;
+    /* background-color: var(--building-color2); */ /* VER PASO 14*/
+}
+
+/* 40.- Creamos y añadimos las siguientes propiedades a .bb2a:
+    margin: auto; width: 5vw; height: 5vw; border-top: 1vw solid #000; border-bottom: 1vw solid #000; border-left: 1vw solid #999; border-right: 1vw solid #999;
+    
+    Después de agregar estos, podremos ver cómo un borde grueso en un elemento nos da algunos ÁNGULOS donde se encuentran dos lados (nos formó un cuadrado con los lados laterales 
+    color gris). Vamos a usar ese borde inferior como la parte SUPERIOR del edificio.*/
+
+/* 41.- A continuación eliminamos width y height de bb2a, y cambiamos border-left y border-right para usar 5vw en lugar de 1vw. El elemento ahora tendrá un tamaño 0 y los bordes se UNIRÁN
+    EN EL MEDIO (nos crea una especie de reloj de arena)*/
+
+/* 42.- A continuación, cambiamos los dos #999 de bb2a a transparent. ESTO HARÁ INVISIBLES las frontes IZQUIERDA y DERECHA.*/
+
+/* 43.- Eliminamos las propiedades y valores margin y border-top de bb2a para convertirlo en un TRIANGULO en la PARTE SUPERIOR del EDIFICIO (las convertimos en comentarios)*/
+
+/* 44.- Finalmente, en la propiedad border-bottom de bb2a, cambiamos el 1vw a 5vh y cambiamos el color #000 a nuestra variable --building-color2. 
+        Ahora se ve bien. En cualquier momento a lo largo del proyecto pode*/
+
+.bb2a {
+    /*margin: auto; */
+    /* width: 5vw;
+    height: 5vw; */
+    /*border-top: 1vw solid #000; */
+    border-bottom: 5vh solid var(--building-color2);
+    border-left: 5vw solid transparent;
+    border-right: 5vw solid transparent;
+}
+
+/* 35.- Creamos un selector para nuestra sección bb2b y le dimos un width y height de 100% para que llene el contenedor de construcción.*/
+
+/* 37.- Las transiciones de gradiante a menudo cambian gradualmente de un color a otro. Podemos hacer que el cambio sea una línea sólida como esta:
+    linear-gradient(var(--first-color) 0%, var(--first-color) 40%, var(--second-color) 40%, var(--second-color) 80%;) 
+    
+    Agregamos un linear-gradient a .bb2b que use --building-color2 de 0 a 6% y --window-color2 de 6% a 9%.*/
+    
+/* 38.- Podemos ver el cambio de color duro en la parte superior de la sección. Cambiamos el tipo de degradado de linear-gradiente a repeating-linear-gradient
+    para esta sección. Esto hará que los cuatro colores de nuestro degradado SE REPITAN hasta que llegue AL FONDO de nuestro elemento, dándonos algunas
+    rayas y AHORRÁNDONOS tener que agregar un montón de elementos para crearlos*/
+
+.bb2b {
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(var(--building-color2), var(--building-color2) 6%, var(--window-color2) 6%, var(--window-color2) 9%);
+}
+
+/* 46.- Hasta ahora, todos los degradados que hemos creado han ido de ARRIBA a ABAJO, esa es la dirección predeterminada. Podemos especificar otra dirección agregándola ANTES de sus colores
+        como en la siguiente manera:
+        gradient-type(direction, color1, color2);
+        
+        Rellenamos bb3 con un repeating-linear-gradient. Usamos 90deg para la dirección, su building-color 3 para los DOS PRIMEROS colores, y window-color3 en 15% para el tercero. 
+        Cuando NO especifiquemos una distancia para un color, usará los valores que tengan sentido. En este caso, serán 0% y 7.5% porque comienzan en 0% y 7.5% y es la mitad de 15% */
+
+/* 47.- Quitamos la propiedad y el valor background-color, ya que ahora estamos usando un degradado como fondo*/
+
+.bb3 {
+    width: 10%;
+    height: 55%;
+    /*background-color: var(--building-color3);*/
+    background: repeating-linear-gradient(90deg, var(--building-color3), var(--building-color3), var(--window-color3) 15%);
+}
+
+/* 49.- Eliminamos la propiedad y el valor background-color de bb4 y lo agregamos a las 3 nuevas secciones (bb4a, bb4b y bb4c), de modo que solo se rellenen las secciones.*/
+
+
+.bb4 {
+    width: 11%;
+    height: 58%;
+    /*background-color: var(--building-color4);*/
+}
+
+/* 48.- Asignamos a los nuevos elementos div, estos valores: width y height: 3% y 10% a bb4a, 80% y 5% a bb4b, 100% y 85% a bb4c.
+*/
+
+.bb4a {
+    width: 3%;
+    height: 10%;
+    background-color: var(--building-color4);
+}
+
+.bb4b {
+    width: 80%;
+    height: 5%;
+    background-color: var(--building-color4);
+}
+
+.bb4c {
+    width: 100%;
+    height: 85%;
+    background-color: var(--building-color4);
+}
+
+/* 53.- Le damos a la clase bb4-window un width de 18%, un height de 90% y le agregamos nuestra variable --window-color4 como el background-color*/
+
+.bb4-window {
+    width: 18%;
+    height: 90%;
+    background-color: var(--window-color4);
+}
+
+/* 20.- Deseamos que el contenedor .foreground-buildings se coloque directamente ENCIMA del elemento .background-buildings. 
+    Le damos un width y un height de 100%, establecemos el position en absolute y el top en 0. Esto lo hará del mismo tamaño que el 
+    cuerpo y moverá el INICIO del mismo a la ESQUINA SUPERIOR IZQUIERDA*/
+
+/* 22.- Agregamos las mismas propiedades y valores display, align-items y justify-content a .foreground-buildings que usamos en .background-buildings.
+    Una vez más, esto usará Flexbox para espaciar uniformemente los edificios en pa parte INFERIOR de su contenedor*/    
+
+/* 24.- Como ya hemos mezclado y agregado estas propiedades de foreground-buildings al selector múltiple background-buildings y foreground-buildings, podemos eliminar
+    este selector (Lo transformaremos en comentario)
+
+.foreground-buildings {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    
+}
+*/
+
+/* 21.- Ahora damos a los SEIS nuevos elementos los siguientes valores: width y height de 10% y 60% a fb1, 10% y 40% a fb2, 10% y 35% a fb3,
+    8% y 45% a fb4, 10% y 33% a fb5 y 9% y 38% a fb6 */
+
+/* 25.- El horizonte se está juntando. Rellenamos la propiedad background-color de los edificios en primer plano. Usamos la variable --building-color1 para completar .fb3 
+    y .fb4, --building-color2 para .fb5, --building-color3 para .fb2 y .fb6 y --buildingcolor4 para .fb1*/
+
+/* 56.- Movemos la propiedad y el valor background-color de fb1 a fb1b (como siempre, transformamos la propiedad en comentario)*/
+
+.fb1 {
+    width: 10%;
+    height: 60%;
+    /*background-color: var(--building-color4);*/
+}
+
+/* 55.- Proporcionamos a fb1b un width de 60% y un height de 10% y fb1c 100% y 80 % de width y height*/
+
+.fb1b {
+    width: 60%;
+    height: 10%;
+    background-color: var(--building-color4);
+}
+
+/* 57.- No es necesario que nos preocupemos por el espacio en la parte inferior, todo se moverá hacia abajo más tarde cuando agreguemos 
+        algo de altura al elemento en la parte superior del edificio.
+        
+        Agregamos un repeating-linear-gradient a fb1c con ángulo de 90 deg, su --building-color4 de 0% a 10% y transparent de 10% a 15%*/
+
+.fb1c {
+    width: 100%;
+    height: 80%;
+    background: repeating-linear-gradient(90deg, var(--building-color4) 0%, var(--building-color4) 10%, transparent 10%, transparent 15%);
+}
+
+.fb2 {
+    width: 10%;
+    height: 40%;
+    background-color: var(--building-color3);
+}
+
+.fb3 {
+    width: 10%;
+    height: 35%;
+    background-color: var(--building-color1);
+}
+
+/* 26.- Movemos la posición de .fb4 relativa a donde está ahora agregando un position de relative y left de 10% al él. Lo mismo también para .fb5 pero
+    usamos right en lugar de left. Esto cubrirá el espacio en blanco restante entre ellos.*/ 
+
+.fb4 {
+    position: relative;
+    left: 10%;
+    width: 8%;
+    height: 45%;
+    background-color: var(--building-color1);
+}
+
+.fb5 {
+    position: relative;
+    right: 10%;
+    width: 10%;
+    height: 33%;
+    background-color: var(--building-color2);
+}
+
+.fb6 {
+    width: 9%;
+    height: 38%;
+    background-color: var(--building-color3);
+}

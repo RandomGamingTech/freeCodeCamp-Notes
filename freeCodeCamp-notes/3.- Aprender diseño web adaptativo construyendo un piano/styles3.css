@@ -1,0 +1,144 @@
+/* 1.- Los navegadores pueden aplicar valores de margen y de 
+relleno por DEFECTO a los elementos ESPECÍFICOS. Pasa asegurarnos 
+de que nuestro piano tiene un aspecto CORRECTO, REAJUSTAMOS el modelo
+de CAJA.
+Declaramos una regla que selecciona al html y la establecimos con la
+propiedad box-sizing en border-box*/
+html {
+    box-sizing: border-box;
+}
+/* 2.- Ahora que hemos establecido el MODELO de CAJA del html, también tenemos
+que PASARLO a los ELEMENTOS DE SU INTERIOR.
+Para lograr esto podemos establecer la propiedad box-sizing en inherit, lo que
+indicará a los elementos apuntados que usen el MISMO VALOR que el elemento PADRE
+También tuvimos que apuntar a los pseudo-elementos, que son PALABRAS CLAVE especiales
+que siguen a UN SELECTOR. Los dos pseudo-elementos que usaremos son ::before y ::after.
+El selector ::before crea un PSEUDO-ELEMENTO que es el PRIMER HIJO del elemento seleccionado,
+El selector ::after crea un PSEUDO-ELEMENTO que es el ÚLTIMO HIJO del elemento seleccionado.
+Estos dos pseudo-elementos a menudo se usan para crear CONTENIDO COSMÉTICO.
+Creamos un selector * y un selector ::before y un ::after. 
+Establecimos su propiedad box-sizing en inherit
+COMO EJEMPLO, los pseudo-elementos ::before y ::after los usamos para agregar texto ANTES O DESPUÉS
+de por ejemplo, un elemento p; pero mediante CSS.*/
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+/* 3.- Ahora apuntamos al elemento #piano con un selector. Establecimos su propiedad
+background-color a #00471b, la propiedad width a 992px y la propiedad height a 290px. */
+/* 4.- Establecimos el margin del #piano en 80px auto*/
+/* 7.- Ahora movemos las teclas a su posición correcta ajustando el selector #piano.
+Establecimos la propiedad padding a 90px 20px 0 20px*/
+/* 14.- El img element necesita que su PADRE tenga una position para establecerla como punto
+de referencia. Establecemos la position de #piano en relative.
+ESTO ACOMODÓ EN SU LUGAR EL LOGO DE freeCodeCamp. */
+/* 15.- Para SUAVIZAR los BORDES del piano y las teclas, comenzamos dándole a #piano un border-radius
+de 10px 
+Esto redondeó el cuadrado VERDE que contiene las teclas. */
+#piano {
+    background-color: #00471b;
+    width: 992px;
+    height: 290px;
+    margin: 80px auto;
+    padding: 90px 20px 0 20px;
+    position: relative;
+    border-radius: 10px;
+}
+/* 5.- Ahora le daremos estilo a las teclas. Apuntamos al elemento .keys. Le dimos una propiedad
+background-color de #040404, una propiedad width de 949px y una propiedad height de 180px*/
+/* 6.- Le dimos también un padding-left de 2px*/
+/* 22.- Las teclas se COLAPSAN cuando la ventana del navegador es MENOR de 768px.
+Establecemos overflow en hidden para el primer selector de keys para SOLUCIONAR este problema.
+ESTO LO QUE HACE es OCULTAR cualquier elemento que sea EMPUJADO FUERA del valor del width establecido
+en .keys */
+.keys {
+    background-color: #040404;
+    width: 949px;
+    height: 180px;
+    padding-left: 2px;
+    overflow: hidden;
+}
+/* 8.- Ahora estilizaremos las teclas (primero las blancas). Creamos un selector class para los .key elements.
+Establecimos el background-color con valor #ffffff,
+Una position en relative, un width de 41px y un height de 175px */
+/* 9.- Luego le dimos a .key un margin de 2px y un float establecido en left
+ESTO ACOMODÓ LAS TECLAS BLANCAS EN SU LUGAR.*/
+/* 16.- Le dimos a .key una propiedad border-radius de 0 0 3px 3px. 
+!!!!COMO NOTA ADICIONAL!!!! TE DEJO LA *UBICACIÓN* DE LOS VALORES DE BORDER-RADIUS
+border-radius: valor-arriba-izquierda valor-arriba-derecha valor-abajo-derecha valor-abajo-izquierda;*/
+.key {
+    background-color: #ffffff;
+    position: relative;
+    width: 41px;
+    height: 175px;
+    margin: 2px;
+    float: left; 
+    border-radius: 0 0 3px 3px;   
+}
+/* 10.- Ahora es tiempo de usar los pseudo-selectores que preparamos antes.
+Para crear las teclas negras, añadimos un nuevo selector .key.black--key::after. 
+Esto apuntará a los elementos con la clase key black--key y seleccionará el 
+pseudo-elemento después de estos elementos en el html. 
+En el nuevo selector, establecemos el background-color a #1d1e22. También 
+establecimos un content en "". Esto hará que los pseudo-elementos estén vacíos.
+La propiedad content es usada para ESTABLECER o ANULAR el CONTENIDO de un elemento.
+Por default, los pseudo-elementos creados por los pseudo-selectores ::before y ::after
+están vacíos y los elementos no serán renderizados en la página.
+Establecer la propiedad content en una string vacía "" asegurará que el elemento esté
+renderizado en la página MIENTRAS AÚN ESTÁ VACÍO. 
+El contenido lo podríamos establecer incluso en ♥ y se vería renderizado en la pantalla. */
+/* 11.- Le dimos también una position establecida en absolute y un left establecido en 
+-18px*/
+/* 12.- Le dimos además, un width de 32px, y un height de 100px*/
+/* 17.- Le dimos a este selector un border-radius de 0 0 3px 3px para que COINCIDA con las teclas.*/
+.key.black--key::after {
+    background-color: #1d1e22;
+    content: "";
+    position: absolute;
+    left: -18;
+    width: 32px;
+    height: 100px;
+    border-radius: 0 0 3px 3px;
+}
+/* 13.- Comenzamos a estilizar el .logo
+Establecemos el width en 200px, una position en absolute y un top en 23px*/
+.logo {
+    width: 200px;
+    position: absolute;
+    top: 23px;
+}
+/* 18.- @media es conocido como CONSULTA DE LOS MEDIOS (media query) es  comunmente utilizada 
+para aplicar CSSS de forma condicional. Media quieries es comunmente usada para aplicar CSS basado en
+width del viewport usando las propiedades max-wdith y min-width.
+La siguiente Media query es aplicada CUANDO el VIEWPORT tenga un ancho de 768px o MENOS*/
+/* 19.- Agregamos un selector #piano dentro de nuestro media query y establecimos el width en 358px
+ESTO QUIERE DECIR, que cuando por ejemplo, cuando HAGAMOS PEQUEÑA la ventana del NAVEGADOR y esta tenga un ancho de
+768px O MENOS, el width de #piano, será de 358px */
+/* 20.- Dentro de @media agregamos un selector .keys y establecimos el width a 318px.
+ESTO HARÁ QUE LAS TECLAS negras se acomoden en un ANCHO de 318px cuando el ancho del viewport sea de 768px O MENOS*/
+/* 21.- Ahora agregamos un selector .logo a @media query y establecemos la propiedad de width en 150px. 
+Esto hará que el logo mida 150px cuando el viewport sea de 768px o MENOS*/
+
+@media (max-width: 768px) {
+    #piano {
+        width: 358px;
+    }
+    .keys {
+        width: 318px;
+    }
+    .logo {
+        width: 150px
+      }
+}
+/* 23.- Es posible AUMENTAR LA COMPLEJIDAD de las media quieries usando OPERADORES LÓGICOS.
+El operador lógico and es usado para combinar en UNA SOLA consulta DOS CARACTERÍSTICAS de MEDIOS.
+Añadimos otra @media que aplique si la pantalla del navegador tiene una anchura MAYOR que 769px pero MENOR que 1199px */
+/* 24.- Para nuestra nueva regla @media establecimos el width de #piano a 675px y el width de .keys a 633px.
+CON ESTO TERMINAMOS EL PIANO :D*/
+@media (min-width: 769px) and (max-width: 1199px) {
+    #piano {
+        width: 675px;
+    }
+    .keys {
+        width: 633px;
+    }  
+}

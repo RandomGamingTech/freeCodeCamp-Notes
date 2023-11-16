@@ -1,0 +1,89 @@
+<!-- 1.- Comenzamos añadiendo una estructura html-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 2.- dentro de head añadimos un meta con charset UTF-8, un title con City Skyline y un link
+    que la vincula a su página css-->
+    <meta charset="UTF-8">
+    <title>City Skyline</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <!-- 3.- Creamos un div en body con la clase de background-buildings. Este será un contenedor para un
+         grupo de edificios.-->
+    <div class="background-buildings">
+        <!-- 7.- Los edificios han quedado muy espaciados. COMPRIMENTAMOS agregando DOS elementos div vacíos en la parte superior del 
+        elemento .background-buildings y DOS MÁS en la parte INFERIOR y UNO MÁS en la entre bb3 y bb4-->
+        <div></div>
+        <div></div>
+        <!-- 4.- Anidamos un div con una clase de bb1 en el contenedor de edificios em segundo plano.
+            bb significa background building-->
+        <!-- 14.- Agregamos la nueva clase building-wrap a los elementos bb1 y bb4. Esto aplicará las propiedades de centrado a los edificios 
+             correspondientes-->
+        <div class="bb1 building-wrap">
+            <!-- 5- Anidamos dentro de este div, .bb1, otros CUATRO div. Les damos a cada uno una clase de bb1a,
+                bb1b, bb1,c y bb1d en ese orden. Ya que este edificio tendrá cuatro secciones-->
+            <!-- 11.- Agregamos una nueva clase bb1-window a los elementos .bb1a, .bb1b y .bb1c para aplicarles el degradado-->
+            <div class="bb1a bb1-window"></div>
+            <div class="bb1b bb1-window"></div>
+            <div class="bb1c bb1-window"></div>
+            <div class="bb1d"></div>
+        </div>
+        <!-- 6.- Ahora anidamos 3 nuevos elementos dentro de .background-buildings y les asignamos las clases bb2, bb3 y bb4 en ese orden.
+            Estos serán tres edificios más para el fondo-->
+        <div class="bb2">
+            <!-- 12.- Anidamos dos elementos div dentro de bb2 y les asignamos las clases de bb2a y bb2b en ese orden. Estas serán dos secciones para
+                este edificio-->
+            <div class="bb2a"></div>
+            <div class="bb2b"></div>
+        </div>
+        <div class="bb3"></div>
+        <div></div>
+        <div class="bb4 building-wrap">
+            <!-- 13-. El próximo edificio tendrá TRES secciones. Anidamos tres elementos div dentro de bb4. Le damos las clases bb4a, bb4b y bb4c en ese orden-->
+            <div class="bb4a"></div>
+            <div class="bb4b"></div>
+            <!-- 16.- Agregamos la nueva clase window-wrap al elemento bb4c -->
+            <div class="bb4c window-wrap"> 
+                <!-- 15.- Anidamos 3 div dentro de bb4c, le damos toda la clase de bb4-window. Estas serán las ventanas de este edificio.-->
+                <div class="bb4-window"></div>
+                <div class="bb4-window"></div>
+                <div class="bb4-window"></div>
+                <div class="bb4-window"></div>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- 8.- Los edificios de fondo están a comenzando a verse bien. Creamos un nuevo div debajo del elemento .background-buildings y le asignamos
+        una clase de foreground-buildings. Este será otro contenedor PARA MÁS EDIFICIOS-->
+    <div class="foreground-buildings">
+        <!-- 9.- Anidamos 6 elementos div dentro de .foreground-buildings y les asignamos las clases de fb1 hasta fb6 en ese orden. 
+            fb significa foreground building.
+            Estos serán 6 edificios más para el primer plano-->
+            <!-- 10.- Volvemos a juntar los edificios agregando dos elementos div vacíos en la parte SUPERIOR e INFERIOR del div .foreground-buildings y uno más
+                entre .fb2 y .fb3-->
+        <div></div>
+        <div></div>
+        <!-- 18.- Agregamos la clase building-wrap al elemento fb1 para CENTRAR las secciones-->
+        <div class="fb1 building-wrap">
+            <!-- 17.- Ahora convertimos el edificio fb1 en TRES SECCIONES anidando TRES nuevos elementos div dentro de él. Le damos las clases fb1a, fb1b y fb1c en ese orden-->
+            <div class="fb1a"></div>
+            <div class="fb1b"></div>
+            <div class="fb1c"></div>
+        </div>
+        <div class="fb2"></div>
+        <div></div>
+        <div class="fb3"></div>
+        <div class="fb4"></div>
+        <div class="fb5"></div>
+        <div class="fb6"></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
