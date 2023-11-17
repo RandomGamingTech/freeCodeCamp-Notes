@@ -8,6 +8,7 @@
         - La hora de estilo de fuente cargará TRES FUENTES SEPARADAS: Athon, Baskervville y Raleway-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,57 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    
+    <!-- 3.- Dentro de nuestro body, creamos un elemento main. Luego, en ese elemento, creamos un section con un class establecido en heading.-->
+    <main>
+        <section class="heading">
+            <!-- 4.- Dentro de nuestro elemento heading, creamos u  elemento header con la class establecida en hero. En este elemento, creamos un img con el src
+                    establecido en https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png, el alt establecido en freecodecamp logo y el
+                    class establecido en hero-img 
+                    - El atributo loading de un elemento img, puede establcerse como lazy, para INDICAR AL NAVEGADOR que NO recupere el recurso de la imagen hasta que
+                        sea necesario (por ejemplo, cuando el usuario se desplace para ver la imagen). Como beneficio adicional, los elementos de carga lenta NO se cargarán
+                        HASTA que los elementos NO LENTOS se carguen -esto significa que los usuarios con conexiones de internet lentas, pueden ver el contenido de su página SIN
+                        TENER QUE ESPERAR a que las imágenes se carguen.
+                    
+                    -Le damos a nuestro elemento img un atributo loading establecido en lazy.-->
+            <header class="hero">
+                <!-- 6.- Nuestra imagen actualmente ocupa mucho espacio. Para ver mejor en qué estamos trabajando, agregamos un atributo width a nuestro elemento img con un 
+                            valor de 400 (lo eliminaremos más tarde cuando ya estemos trabajando con CSS)-->
+                <img src="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png"
+                    alt="freecodecamp logo" class="hero-img" loading="lazy" width="400">
+                <!-- 5.- Luego de nuestro elemento img, creamos un un h1 con class her-title y el texto OUR NEW CURRICULUM, seguido de un elemento p con class hero-subtitle y el texto
+                        en Our efforts to restructure our curriculum with a more project-based focus.-->
+                <h1 class="hero-title">OUR NEW CURRICULUM</h1>
+                <p class="hero-subtitle">Our efforts to restructure our curriculum with a more project-based focus</p>
+            </header>
+            <!-- 7.- Luego de nuestro elemento header, creamos un div con la class establecida en autor. Dentro de ese div creamos un elemento p con la class configurada en author-name y le damos un texto
+                    By freeCodeCamp. Envolvemos la porción freeCodeCamp con un a con href establecido en (https://freecodecamp.org) y el target establecido en _blank
+                    Después, debajo de eso agregamos un SEGUNDO elemento p con la clase publish-date y el texto March 7, 2019-->
+            <div class="author">
+                <!-- 8.- El encabezado HTTP Referer contiene información sobre la dirección o URL de una página desde la que un usuario podría estar visitando. Esta información se puede usar en análisis para
+                    rastrear CUÁNTOS USUARIOS de nuestra página visitan freecodecamp.org (por poner un ejemplo).
+                    EN OTRAS PALABRAS, esto hace que el sitio hacia donde vamos mediante el elemento a NO CONOZCA EL ORIGEN de dónde fue el visitante.
+                    Establecer el rel en noreferrer OMITE esa información de la solicitud HTTP. Asignamos a nuestro elemento a un atributo rel establecido en noreferrer-->
+                <p class="author-name">By <a href="https://freecodecamp.org" target="_blank"
+                        rel="noreferrer">freeCodeCamp</a></p>
+                <p class="publish-date">March 7, 2019</p>
+            </div>
+            <!-- 9.- Debajo de nuestro elemento author, creamos un nuevo elemento div con la clase social-icons. Agregamos 5 elementos a dentro del div y les asignamos los siguientes atributos href:
+                El primer a debe estar establecido en: (https://www.facebook.com/freecodecamp)
+                El segundo en: (https://twitter.com/freecodecamp)
+                El tercero en: (https://instagram.com/freecodecamp).
+                El cuarto en: (https://www.linkedin.com/school/free-code-camp)
+                El quinto en: (https://www.youtube.com/freecodecamp)-->
+            <div class="social-icons">
+                <a href="https://www.facebook.com/freecodecamp"></a>
+                <a href="https://twitter.com/freecodecamp"></a>
+                <a href="https://instagram.com/freecodecamp"></a>
+                <a href="https://www.linkedin.com/school/free-code-camp"></a>
+                <a href="https://www.youtube.com/freecodecamp"></a>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>
