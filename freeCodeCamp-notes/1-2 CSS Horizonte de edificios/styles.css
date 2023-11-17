@@ -34,10 +34,13 @@
     --window-color4: #8cb3d9;
 }
 
+/* 81.- Ahora que tenemos los edificios ya hechos, eliminamos del selector * la propiedad border, ya que no necesitaremos más saber el borde de nuestro edificio (Lo convertiremos en comentario). */
+
 * {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-sizing: border-box;
 }
+
 
 /* 3.- El cuadrado más interno que se ve gracias al borde general, es el body. El cuadrado exterior es el elemento
     html. En este paso hacemos que nuestro body llene TODO el viewport, dándole un height de 100vh.
@@ -107,6 +110,16 @@ body {
     align-items: center;
     justify-content: space-evenly;
     
+}
+
+/* 82.- Le damos a la clase sky un radial-gradient. Usamos #ffcf33 del 0% al 20%, #ffff66 al 21% y #bbeeff en 100%. Esto agregará un degradado circular al fonde que será NUESTRO SOL.*/
+
+/* 83.- En la parte superior de la lista de colores del degradado del cielo, donde pondríamos una dirección para el degradado, agregamos circle closest-corner a 15% 15%. Esto MOVERÁ el inicio del 
+        degradado a 15% desde la parte superior e izquierda. Hará que termine en la closest-corner y mantendrá una forma de circle.
+        - Estas son algunas palabras clave integradas en gradientes para describir COMO SE COMPORTA.*/
+
+.sky {
+    background: radial-gradient(circle closest-corner at 15% 15%, #ffcf33 0%, #ffcf33 20%, #ffff66 21%, #bbeeff 100%);
 }
 
 .bb1 {
@@ -518,8 +531,48 @@ body {
     background: repeating-linear-gradient(var(--building-color2) 0%, var(--building-color2) 5%, transparent 5%, transparent 10%), repeating-linear-gradient(90deg, var(--building-color2) 0%, var(--building-color2) 12%, var(--window-color2) 12%, var(--window-color2) 44%);
 }
 
+/* 78.- Finalmente, llegamos al último edificio. Agregamos un degradado repetitivo con una dirección de 90deg. Usamos un color de construcción de 0% y transparent de 10% a 30%*/
+
+/* 79.- Agregamos otro degradado repetitivo a este edificio. Lo hacemos igual que el que acabamos de agregar, excepto que no agregaremos la dirección de 90deg y usamos el color de la ventana en lugar de los dos colores transparent.*/
+
+/* 80.- Ahora que hemos agregado nuestro background, ya no necesitaremos el background-color, por lo que procedemos a eliminarlo (lo convertimos en un comentario).*/
+
 .fb6 {
     width: 9%;
     height: 38%;
-    background-color: var(--building-color3);
+    /*background-color: var(--building-color3);*/
+    background: repeating-linear-gradient(90deg, var(--building-color3) 0%, var(--building-color3) 10%, transparent 10%, transparent 30%), repeating-linear-gradient(var(--building-color3) 0%, var(--building-color3) 10%, var(--window-color3) 10%, var(--window-color3) 30%);
 }
+
+/* 84.- Una consulta de medios se puede usar para cambiar estilos en función de ciertas condiciones y se ven así: 
+        @media (condition) {
+        }
+        Agregamos una consulta multimedia VACÍA en la parte inferior de la hoja de estilos, con una condición de max-width: 1000px. 
+        Los estilos agregados aquí surtirán efecto cuando el tamaño del documento sea de 1000px de ancho o menos.*/
+
+/* 85.- Copiamos y pegamos toda la clase sky junto con sus propiedades y valores en la consulta de medios. Vamos a hacer otro esquema de color para el horizonte que lo cambie de DÍA a NOCHE.*/
+
+/* 86.- En la clase sky de la consulta de medios, cambiamos los dos valores de color #ffcf33 a #ccc, el #ffff66 a #445 y el #bbeeff a #233*/
+
+/* 87.- Agregamos un selector :root en la parte superior de la consulta de medios. Luego redefinimos las cuatro variables --building-color para usar el valor #000 allí*/
+
+/* 88.- Por último, en el selector :root de consulta de medios, redefinimos las cuatro variables --window-color para usar #777.*/
+
+@media (max-width: 1000px) {
+    .sky {
+        background: radial-gradient(circle closest-corner at 15% 15%, #ccc 0%, #ccc 20%, #445 21%, #223 100%);
+    }
+
+    :root {
+        --building-color1: #000;
+        --building-color2: #000;
+        --building-color3: #000;
+        --building-color4: #000;
+        --window-color1: #777;
+        --window-color2: #777;
+        --window-color3: #777;
+        --window-color4: #777;
+    }
+    
+}
+        
