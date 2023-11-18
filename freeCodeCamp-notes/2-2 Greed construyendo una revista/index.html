@@ -60,12 +60,107 @@
                 El cuarto en: (https://www.linkedin.com/school/free-code-camp)
                 El quinto en: (https://www.youtube.com/freecodecamp)-->
             <div class="social-icons">
-                <a href="https://www.facebook.com/freecodecamp"></a>
-                <a href="https://twitter.com/freecodecamp"></a>
-                <a href="https://instagram.com/freecodecamp"></a>
-                <a href="https://www.linkedin.com/school/free-code-camp"></a>
-                <a href="https://www.youtube.com/freecodecamp"></a>
+                <!-- 10.- Dentro de cada elemento a, agregamos un elemento i y les asignamos las siguientes clases:
+                    1.- fab fa-facebook-f 2.- fab fa-twitter 3.- fab fa-instagram 4.- fab fa-linkedin 5.- fab-youtube-->
+                <a href="https://www.facebook.com/freecodecamp"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/freecodecamp"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/freecodecamp"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/school/free-code-camp"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/freecodecamp"><i class="fab fa-youtube"></i></a>
             </div>
+        </section>
+        <!-- 11.- Debajo de nuestro elemento heading creamos un nuevo elemento section con class establecido en text. Dentro de este, creamos un elemento p con la class establecida en first-paragraph y UN TEXTO ESPECÍFICO (dado por fcc)-->
+        <section class="text">
+            <p class="first-paragraph">Soon the freeCodeCamp curriculum will be 100% project-driven learning. Instead of
+                a series of coding challenges, you'll learn through building projects - step by step. Before we get into
+                the details,
+                let me emphasize: we are not changing the certifications. All 6 certifications will still have the same
+                5 required projects. We are only changing the optional coding challenges.</p>
+            <!-- 12.- Creamos otro elemento p DEBAJO de nuestro elemento first-paragraph y le asignamos un texto específico proporcionado por ffc-->
+            <p>After years - years - of pondering these two problems and how to solve them, I slipped, hit my head on
+                the sink, and when I came to I had a revelation! A vision! A picture in my head! A picture of this! This
+                is what makes time travel possible: the flux capacitor!</p>
+            <!-- 13.- Agregamos un tercer elemento p al final de nuestro elemento .text y les asignamos un texto proporcionado por fcc-->
+            <p>It wasn't as dramatic as Doc's revelation in Back to the Future. It just occurred to me while I was going
+                for a run. The revelation: the entire curriculum should be a series of projects. Instead of individual
+                coding challenges, we'll just have projects, each with their own seamless series of tests. Each test
+                gives you just enough information to figure out how to get it to pass. (And you can view hints if that
+                isn't enough.)</p>
+            <!-- 14.- Luego de nuestros tres elementos p, dentro del elemento text creamos un elemento blockquote. Dentro de eso, agregamos un elemento hr y un elemento p con class establecido en quote y un segundo elemento hr
+                NOTA! El elemento blockquote, nos sirve para poner citas, les agrega sangrado y semánticamente le dice al navegador acerca de la naturaleza del contenido.
+                    el elemento hr nos pone UNAS LINEAS dentro para cubrir nuestra cita (encerramos el p dentro de dos hr)-->
+            <blockquote>
+                <hr>
+                <p class="quote">The entire curriculum should be a series of projects</p>
+                <hr>
+            </blockquote>
+            <!-- 15.- Debajo de nuestro elemento blockquote agregamos otro elemento p con un texto establecido por fcc-->
+            <p>No more walls of explanatory text. No more walls of tests. Just one test at a time, as you build up a
+                working project. Over the course of passing thousands of tests,
+                you build up projects and your own understanding of coding fundamentals. There is no transition between
+                lessons and projects, because the lessons themselves are baked into projects. And there's plenty of
+                repetition to help you retain everything because - hey - building projects in real life has plenty of
+                repetition.</p>
+            <!-- 16.- Creamos un quinto elemento p al final de nuestro elemento text y le asignamos un texto establecido -->
+            <p>The main design challenge is taking what is currently paragraphs of explanation and instructions and
+                packing them into a single test description text. Each project will involve dozens of tests like this.
+                People will be coding the entire time, rather than switching back and forth from "reading mode" to
+                "coding mode".</p>
+            <!-- 17.- Creamos un elemento p al final de nuestro elemento text y le asignamos un texto dado por fcc-->
+            <p>Instead of a series of coding challenges, people will be in their code editor passing one test after
+                another, quickly building up a project. People will get into a real flow state, similar to what they
+                experience when they build the required projects at the end of each certification. They'll get that
+                sense of forward progress right from the beginning. And freeCodeCamp will be a much smoother experience.
+            </p>
+        </section>
+        <!-- 18.- Debajo de nuestro elemento text, creamos un elemento section y le asignamos una class de text text-with-images. 
+                Dentro de eso, creamos un elemento article con class brief-story y un elemento aside con class establecido en image-wrapper
+                
+                NOTA! el elemento ARTICLE en HTML se usa para REPESENTAR una pieza INDEPENDIENTE y AUTÓNOMA de contenido que podría existir y ser distribuida POR SEPARADO del resto del contenido. Este elemento es útil cuando tenemos una sección
+                de nuestra página web que constituye un ARTÍCULO, una ENTRADA DE BLOG, un COMENTARIO, un FORO, una NOTICIA o CUALQUIER otra pieza de contenido independiente y autónoma.
+                Entre otras ventajas, article MEJORA LA ACCESIBILIDAD, MEJORA EL SEO y FACILITA LA REUTILIZACIÓN.
+                NOTA2! el elemento ASIDE en HTML se usa para MARCAR CONTENIDO que está tangencialmente relacionado con el contenido que lo rodea, pero que puede ser considerado independiente de ese contenido. Podemos pensar en aside como UN CONTENEDOR
+                para contenido relacionado pero NO ESENCIAL para la compresión principal del documento. Lo usamos para:
+                1.- CONTENIDO COMPLEMENTARIO, 2.- CONTENIDO LATERAL (como ANUNCIOS en un área lateral de la página) 3.- ELEMENTO AUTÓNOMO, aside también puede contener CONTENIDO AUTÓNOMO y NO está
+                    directamente relacionado con el contenido circundante. -->
+        <section class="text text-with-images">
+            <article class="brief-history">
+                <!-- 19.- Dentro de nuestro elemento article, creamos un elemento h3 con class establecido en list-title y el texto de A Brief History
+                    Debajo de eso, creamos un elemento p con el texto Of the Curriculum 
+                    Luego creamos un elemento ul con class lists-->
+                    <h3 class="list-title">A Brief History</h3>
+                    <p>Of the Curriculum</p>
+                    <ul class="lists">
+                        <!-- 20.- Dentro de nuestro elemento ul, creamos seis elementos li. Agregamos un elemento h4 con una class establecida en list-subtitle y un elemento p a cada uno de nuestros elementos li.
+                                Luego, asignamos a los elementos h4 y p un contenido preestablecido por freeCodeCamp.-->
+                        <li><h4 class="list-subtitle">V1 - 2014</h4>
+                            <p>We launched freeCodeCamp with a simple list of 15 resources, including Harvard's CS50 and Stanford's Database Class.</p></li>
+                        <li><h4 class="list-subtitle">V2 - 2015</h4>
+                            <p>We added interactive algorithm challenges.</p>
+                        <li><h4 class="list-subtitle">V3 - 2015</h4>
+                            <p>We added our own HTML+CSS challenges (before we'd been relying on General Assembly's Dash course for these).</p></li>
+                        <li><h4 class="list-subtitle">V4 - 2016</h4>
+                            <p>We expanded the curriculum to 3 certifications, including Front End, Back End, and Data Visualization. They each had 10 required projects, but only the Front End section had its own challenges. 
+                            For the other certs, we were still using external resources like Node School.</p></li>
+                        <li><h4 class="list-subtitle">V5 - 2017</h4>
+                            <p>We added the back end and data visualization challenges.</p></li>
+                        <li><h4 class="list-subtitle">V6 - 2018</h4>
+                            <p>We launched 6 new certifications to replace our old ones. This was the biggest curriculum improvement to date.</p></li>
+                    </ul>
+            </article>
+            <aside class="image-wrapper">
+                <!-- 21.- Dentro de nuestro elemento aside, creamos dos elementos img, un elemento blockquote y un tercer elemento img. Asignamos al elemento blockquote una class establecida en image-quote-->
+                <!-- 22.- Dentro de nuestro primer elemento img, asignamos un src específico, un alto de image of the quote machine project y un class de image-1, un atributo loading establecido en lazy, un atributo width de 600 y un atributo de height de 400-->
+                <!-- 23.- Dentro de nuestro segundo elemento img, asignamos un src específico, un alt de image of a calculator project, un conjunto de atributos loading lazy, una class establecida en image-2, un width de 400 y un height de 400-->
+                <!-- 24.- Asignamos a nuestro tercer elemento img un src específico, un alt de four people working on code, un loading de lazy, una clase de image-3, un atributo width en 600 y un height de 400-->
+                <img src="https://cdn.freecodecamp.org/testable-projects-fcc/images/random-quote-machine.png" alt="image of the quote machine project" class="image-1" loading="lazy" width="600" height="400">
+                <img src="https://cdn.freecodecamp.org/testable-projects-fcc/images/calc.png" alt="image of a calculator project" loading="lazy" class="image-2" width="400" height="400">
+                <blockquote class="image-quote">
+                    <!-- 25.- Dentro de nuestro image-quote anidamos un elemento hr, un elemento p y un segundo elemento hr. Asignamos al elemento p una class establecida en quote y un texto establecido por fCC-->
+                    <hr><p class="quote">The millions of people who are learning to code through freeCodeCamp will have an even better resource to help them learn these fundamentals.</p><hr>
+                </blockquote>
+                <img src="https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg" alt="four people working on code" loading="lazy" class="image-3" width="600" height="400">
+            </aside>
         </section>
     </main>
 </body>
