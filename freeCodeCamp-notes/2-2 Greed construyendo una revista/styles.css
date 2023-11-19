@@ -1,0 +1,172 @@
+/*1.- Para comenzar con CSS, normalizamos las reglas CSS apuntando a TODOS los ELEMENTOS con (*)
+        incluyendo los ::before y ::after pseudo-selectores.
+        - Establecemos el padding y margin ambos a 0 y establecemos el box-sizing en border-box*/
+
+*, ::before, ::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 2.- Creamos un selector html y le asignamos una propiedad font-size establecida en 62.5%. Esto establecerá
+        el TAMAÑO de FUENTE predeterminado para nuestra página web en 10px (el valor predeterminado del navegador
+        es de 16px)
+        
+        Esto nos facilitará trabajar con unidades rem más adelante, ya que 2rem serían 20 píxeles*/
+
+html {
+    font-size: 62.5%;
+}
+
+/* 3.- Creamos un selector body. Establecemos la propiedad font-family en Baskervville, con una alternativa de serif. 
+        Establecemos la propiedad color en linen y la propiedad background-color en rgb(20, 30, 40)*/
+
+body {
+    font-family: Baskervville, serif;
+    color: linen;
+    background-color: rgb(20, 30, 40);
+}
+
+/* 4.- Creamos un selector h1 y establecemos su font-family en Anton con el respaldo de sans-serif */
+
+h1 {
+    font-family: Anton, sans-serif;
+}
+
+/* 5.- Creamos un selector h2, h3, h4, h5, h6. Le damos una propiedad font-family establecida en Raleway con un respaldo de sans-serif*/
+
+h2,h3,h4,h5,h6 {
+    font-family: Raleway, sans-serif;
+}
+
+/* 6.- Creamos un selector a y le asignamos le quitamos la decoración, y le damos un color de linen*/
+
+a {
+    text-decoration: none;
+    color: linen;
+}
+
+/* 7.- Ahora estamos listos para armar el diseño de la cuadrícula. CSS Grid ofrece un diseño BIDIMENSIONAL pasado en CUADRÍCULAS, lo que nos da
+        la libertad de centrar elementos HORIZONTAL y VERTICALMENTE, mientras conservamos el control para hacer cosas como elementos superpuestos.
+        - Comenzamos creando un selector main y le asignamos una propiedad display en grid*/
+
+/* 8.- Ahora podemos diseñar la cuadrícula. Grid es similar a Flexbox en que tienen una propiedad especial para los elementos PADRE e HIJO. 
+        En este caso, nuestro elemento principal es el elemento main. Configuramos el contenido para que tengamos un diseño de TRES COLUMNAS agregando
+        una propiedad grid-template-columns con un valor de 1fr 94rem 1fr
+        - Esto creará TRES columnas donde la columna de en medio tiene UN ANCHO de 94rem, y la PRIMERA y la SEGUNDA de 1fr.
+        - Fr quiere decir fracción, por lo que 1fr quiere decir que la primera y la última columna SOLO tendrán una FRACCIÓn del espacio RESTANTE del contenedor de cuadrícula.*/
+
+/* 9.- Usamos la FUNCIÓn minmax para hacer que las COLUMNAS se ADAPTEN a CUALQUIER DISPOSITIVO.
+        - La función minmax toma dos argumentos, siendo el PRIMERO el valor MÍNIMO y el SEGUNDO el MÁXIMO. 
+            Estos valores pueden ser una LONGITUD, un PORCENTAJE, FR, o INCLUSO una PALABRA CLAVE como max-content
+        - Envolvemos cada uno de nuestros valores YA DEFINIDOS con la propiedad grid-template columns en una FUNCIÓN minmax, usando cada valor como SEGUNDO argumento.*/
+
+/* 10.- Para agregar espacio entre filas en el diseño de cuadrícula, podemos usar la propiedad row-gap. Le damos al elemento main una propiedad row-gap de 3rem*/
+
+main {
+    display: grid;
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    row-gap: 3rem;
+}
+
+/* 11.- Nuestra revista tendrá 3 secciones. Ya configuramos el diseño general en la regla main, pero PODEMOS ajustar la ubicación en las reglas SECUNDARIAS...
+        - Una opción es la propiedad grid-column, que es la abreviatura de grid-column-start y grid-column-end. La propiedad grid-column le dice al elemento 
+            de la cuadrícula EN QUÉ LÍNEA de la cuadrícula debe COMENZAR y TERMINAR
+        -Creamos una regla .heading y la establecemos en grid-column con valor 2/3.
+            Esto le indicará al elemento .heading que comience en la linea de cuadrícula 2 y finalice en la línea de cuadrícula 3 (o sea, como nuestra cuadrícula se DIVIDE en 
+            3 partes, con esto le decimos grid que .heading comenzará en la sección 2 y terminará cuando comience la 3)*/
+
+/* 13.- Podemos tener un control ADICIONAL sobre el diseño de nuestro contenido, podemos tener una cuadrícula CSS DENTRO de otra cuadrícula CSS
+        -Establecemos la propiedad display de heading en grid*/
+
+/* 14.- Ahora podemos diseñar el contenido del elemento .heading con CSS Grid.
+        -La función CSS repeat() se usa para REPETIR un VALOR, en lugar de escribirlo manualmente, y es útil para los diseños de cuadrícula. Por ejemplo,
+            establecer la propiedad grid-template-columns en repeat(20,200px) crearía 20 columnas cada una de 200px de ANCHO.
+        -Le damos a nuestro elemento .heading una propiedad grid-template-columns establecida en repeat(2,1fr) PARA CREAR DOS COLUMNAS DEL MISMO ANCHO.*/
+
+/* 15.- Le damos a nuestro selector heading una propiedad row-gap establecida en 1.5rem
+        NOTE! Recordar que la propiedad row-gap nos sirve para agregar espacio VERTICALMENTE a las COLUMNAS que tengamos creadas con el diseño de columnas (grid-template-columns)*/
+
+.heading {
+    display: grid;
+    grid-column: 2/3;
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 1.5rem;
+}
+
+/* 12.- Creamos el selector para la class text con, y le asignamos una propiedad grid-column establecida en 2/3 (para que el elemento text se alinea con heading)*/
+
+.text {
+    grid-column: 2/3;
+}
+
+/* 16.- Recordamos que la propiedad grid-column determina en QUÉ COLUMNA COMIENZA y TERMINA un elemento. Puedo haber momentos en los que no estemos seguros de cuántas columnas tendrá nuestra cuadrícula,
+        pero deseamos que un elemento se DETENGA en la ÚLTIMA COLUMNA. Para esto, podemos usar -1 para la COLUMNA FINAL.
+        -Creamos un selector .hero y le asignamos la propiedad grid-column establecida en 1/-1. 
+            Esto le indicará al elemento que abarque TODO EL ANCHO de la cuadrícula.*/
+
+/* 17.- Le damos al selector .hero una propiedad position establecida en relative*/
+
+.hero {
+    position: relative;
+    grid-column: 1/-1;
+}
+
+/* 18.- Creeamos un selector img y le asignamos una propiedad width establecida en 100% y un conjunto de propiedades object-fit para cover.
+        La propiedad OBJECT-FIT le dice a nuestro navegador cómo colocar el elemento dentro de su contenedor. En este caso
+        cover configurará la imagen para llenar el contenedor, RECORTÁNDOLA SEGÚN sea NECESARIO para EVITAR CAMBIAR la relación-aspecto.*/
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* 19.- Creamos un selector .hero-title y le asignamos una propiedad text-align establecida en center y una propiedad color de orangered y una propiedad font-size de 8rem*/
+
+.hero-title {
+    text-align: center;
+    color: orangered;
+    font-size: 8rem;
+}
+
+/* 20.- El subtítulo también necesita ser diseñado. Creamos un selector .hero-subtitle y le asignamos una propiedad font-size establecida en 2.4rem, un color en orangered
+            y una propiedad text-align en center*/
+
+.hero-subtitle {
+    font-size: 2.4rem;
+    color: orangered;
+    text-align: center;
+}
+
+/* 21.- Creamos un selector .author y le asignamos la propiedad font-size en 2rem, un font-family de Raleway con respaldo de sans-serif*/
+
+.author {
+    font-size: 2rem;
+    font-family: Raleway, sans-serif;
+}
+
+/* 22.- Creamos un selector author-name a:hover (esto para señalar que apuntamos al elemento a de la class author name), y le asignamos una propiedad background-color de #306203.
+        Esto creará un efecto de desplazamiento, mostrando el freeCodeCamp verde original en el fondo.*/
+
+.author-name a:hover {
+    background-color: #306203;
+}
+
+/* 23.- Creamos un selector .publish-date y le asignamos una propiedad color de rgba(255,255,255,0.5) 
+        - Esto le dará un color TRANSLÚSIDO */
+
+.publish-date {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* 24.- Creamos un selector social-icons. Le damos una propiedad display establecida en grid y una propiedad font-size de 3rem*/
+
+/* 25.- La configuración predeterminada para CSS Grid, CREARÁ filas adicionales según sea NECESARIO, a diferencia de Flexbox.
+        - Asignamos una propiedad grid-template-columns establecida en repeat(5, 1fr) para organizar los íconos en una sola fila (creará 5 col de 1fr de ancho)
+            ESTO ACOMODÓ NUESTROS ELEMENTOS EN FILA.*/
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 3rem;
+}
