@@ -87,6 +87,17 @@ main {
 /* 15.- Le damos a nuestro selector heading una propiedad row-gap establecida en 1.5rem
         NOTE! Recordar que la propiedad row-gap nos sirve para agregar espacio VERTICALMENTE a las COLUMNAS que tengamos creadas con el diseño de columnas (grid-template-columns)*/
 
+/* 34.- Creamos un selector hr y le asignamos una propiedad margin establecida en 1.5rem 0
+        - Esto acomodó nuestras líneas hechas con el elemento hr */
+        
+/* 35.- Para darle a hr un color, debemos ajustar la propiedad BORDER. 
+        - Le damos al selector hr una propiedad border establecida en 1px solid rgba(120, 120, 120, 0.6)*/
+
+hr {
+    margin: 1.5rem 0;
+    border: 1px solid rgba(120, 120, 120, 0.6);
+}
+
 .heading {
     display: grid;
     grid-column: 2/3;
@@ -96,8 +107,27 @@ main {
 
 /* 12.- Creamos el selector para la class text con, y le asignamos una propiedad grid-column establecida en 2/3 (para que el elemento text se alinea con heading)*/
 
+/* 29.- Asignamos al selector .text una propiedad font-size establecida en 1.8rem y una propiedad letter-spacing en 0.6px
+        - La propiedad letter-spacing, como su nombre lo indica, sirve para establecer EL ESPACIADO entre las letras.*/
+
+/* 30.- Nuestro elemento text no es un grid, pero PODEMOS CREAR COLUMNAS dentro de nuestro elemento SIN UNSAR GIRD, con la PROPIEDAD COLUMN-WIDTH.
+        - Le damos a nuestro .text una propiedad column-width de 25rem
+        
+        -NOTA! vh y vw son unidades relativas al tamaño de la ventana del navegador.
+               rem es relativo al tamaño de la fuente del elemento raíz.
+               em es relativo al tamaño de la fuente del elemento en el que se utiliza.*/
+
+/* 31.- Las revistas a menudo usan TEXTO JUSTIFICADO en su contenido impreso para estructurar su diseño y controlar el flujo de su contenido. Si bien funciona en forma impresa,
+            el texto justificado EN LOS SITIOS WEB puede ser un PROBLEMA DE ACCESIBILIDAD, por ejemplo, represanta desafíos para las personas con DISLEXIA.
+            
+        - Para hacer que nuestro proyecto parezca una revista impresa, asignamos al selector .text una propiedad text-align de justify*/
+
 .text {
     grid-column: 2/3;
+    font-size: 1.8rem;
+    letter-spacing: 0.6px;
+    text-align: justify;
+    column-width: 25rem;
 }
 
 /* 16.- Recordamos que la propiedad grid-column determina en QUÉ COLUMNA COMIENZA y TERMINA un elemento. Puedo haber momentos en los que no estemos seguros de cuántas columnas tendrá nuestra cuadrícula,
@@ -165,8 +195,202 @@ img {
         - Asignamos una propiedad grid-template-columns establecida en repeat(5, 1fr) para organizar los íconos en una sola fila (creará 5 col de 1fr de ancho)
             ESTO ACOMODÓ NUESTROS ELEMENTOS EN FILA.*/
 
+/* 26.- Si deseamos agregar más íconos sociales, PERO mantenerlos en la MISMA FILA, deberemos actualizar grid-template-columns para crear COLUMNAS ADICIONALES.
+        Como ALTERNATIVA, podemos usar la PROPIEDAD GRID-AUTO-FLOW. Esta propiedad toma row o column como PRIMER VALOR, con un segundo valor opcional de dense.
+        - grid-auto-flow usa un algoritmo de colocación automática para ajustar el diseño de la cuadrícula. 
+            - Establecerlo en column le indicará al algoritmo que cree NUEVAS COLUMNAS para el contenido SEGÚN SEA NECESARIO.
+            - El valor dense permite que el algoritmo RETROCEDA y RELLENE LOS HUECOS en la cuadrícula con ELEMENTOS MÁS PEQUEÑOS, lo que puede provocar que los elementos 
+                parezcan DESORDENADOS.
+        - Para nuestro selector .social-icons, establecemos la propiedad grid-auto-flow en column*/
+
+/* 27.- Ahora el algoritmo de colocación automática se activará cuando agreguemos un nuevo elemento de icono. Sin embargo, el algoritmo establece por defecto que el 
+        ancho de la nueva columna sea auto, que NO COINCIDIRÁ con nuestras columnas actuales.
+        - Podemos anular esto con la propiedad grid-auto-columns establecida en 1fr*/
+
+/* 28.- Al igual que Flexbox, con CSS Grid, podemos alinear el contenido de los elementos de la cuadrícula con align-items y justify-items.
+            - align-items ALINEARÁ los elementos SECUNDARIOS a lo largo del EJE de la COLUMNA (arriba, abajo),
+            - justify-content ALINEARÁ los elementos SECUNDARIOS a lo largo del EJE de la FILA.
+        - Asignamos una propiedad align-items en center*/
+
 .social-icons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     font-size: 3rem;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    align-items: center;
+}
+
+/* 32.- El pseudo-selector ::first-letter nos permite APUNTAR A LA PRIMERA LETRA en el contenido de texto en un elemento.
+        - Creamos un selector .first-paragraph::first-letter y lo establecemos en la propiedad font-size 6rem. También le asignamos una propiedad color en orangered para que destaque*/
+
+/* 33.- Debido a que hemos aumentado el tamaño de la letra, el otro texto se ha DESPLAZADO FUERA DE LUGAR. 
+        - Arreglamos esto, dándole nuestro selector, una propiedad float, establecida en left y un margin-right de 1rem
+        
+        - NOTA! Cabe aclarar que float SACA al elemento del FLUJO NORMAL del documento, por lo que en este paso tratamos de acomodarlo con margin.*/
+
+.first-paragraph::first-letter {
+    font-size: 6rem;
+    color: orangered;
+    float: left;
+    margin-right: 1rem;
+}
+
+
+/* 36.- Creamos un selector .quote
+        - Le asignamos un color de #00beef, una propiedad font-size de 2.4rem y una propiedad text-align de center.*/
+
+/* 37.- Para que el texto de la cita destaque más, le asignamos al selector .quote una propiedad font-family establecida en Raleway con un respaldo de sans-serif*/ 
+
+.quote {
+    color: #00beef;
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: Raleway, sans-serif;
+}
+
+/* 38.- Una cita no es realmente una cita sin las comillas adecuadas. 
+        Podemos agregarlas con pseudo-selectores de CSS.
+        
+        -Creamos uns elector .quote::before y establecemos la propiedad CONTENT en " con un ESPACIO a continuación.
+        -Además creamos un selector .quote::after y establecemos la propiedad CONTENT en " con un espacio ANTES*/
+
+.quote::before {
+    content: '" ';
+}
+
+.quote::after {
+    content: ' "';
+}
+
+/* 39.- Ahora es momento de diseñar nuestra tercera section. Debemos tener en cuenta que tenemos los valores .text y .text-width-images para el atributo class,
+            lo que significa que ya hereda los estilos de nuestra regla .text
+            
+        - Creamos un selector .text-with-images y establecemos la propiedad display en grid.*/
+
+/* 40.- Dberemos tener una columna para el texto y una columna para las imágenes. Asignamos al selector .text-with-images una propiedad gird-template-columns establecida en 
+        1fr 2fr .
+        - También establecimos la propiedad column-gap en 3rem para proporcionar MÁS ESPACIO ENTRE COLUMNAS*/
+.text-with-images {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* 41.- Creamos un selector .lists y establecemos la propiedad LIST-STYLE-TYPE en none. Esto eliminará las viñetas en los elementos de la lista.*/
+
+/* 42.- Asignamos al selector .lists una propiedad margin-top establecida en 2rem*/
+
+.lists {
+    list-style-type: none;
+    margin-top: 2rem;
+}
+
+/* 43.- Creamos una regla .lists li para apuntar a los elementos de la lista dentro de nuestro elemento .lists. 
+        - Le damos una propiedad margin-bottom de 1.5rem 
+        - ESTO DA ESPACIO INFERIOR A CADA ELEMENTO LI */
+
+.lists li {
+    margin-bottom: 1.5rem;
+}
+
+/* 44.- Creamos un selector .list-title, list-subtitle 
+        - Luego establecemos el color en #00beef */
+
+.list-title, .list-subtitle {
+    color: #00beef;
+}
+
+/* 45.- Es hora de diseñar la última sección de la revista: las imágenes.
+        - Las imágenes se envuelven con un elemento ASIDE usando la clase image-wrapper, así que creamos un selector.
+        - Establecemos la propiedad display en grid*/
+
+/* 46.- Las imágenes deben estar dentro de un diseño de DOS columnas y TRES filas.
+        - Asignamos al selector .image-wrapper una propiedad grid-template-columns en 2fr 1fr (columnas que MANTIENEN un ANCHO FIJO.) 
+            y una grid-template-rows establecida en (3, min-content) (o sea, FILAS SEGÚN LA ALTURA.)...
+        - Esto le dará a nuestra cuadrícula filas que se ajustan en altura según el contenido, pero columnas que mantienen un ANCHO FIJO*/
+
+/* 47.- La propiedad GAP es una forma abreviada de establecer el varlo de column gao y row-gap AL MISMO TIEMPO.
+        - Si le damos UN SOLO VALOR, establece tanto column-gap como row-gap con ESE VALOR.
+        - Si le damos DOS VALORES, establece row-gap en el PRIMER VALOR y column-gap EN EL SEGUNDO.
+        - Le damos a nuestro selector .image-wrapper una propiedad gap establecida en 2rem*/
+
+/* 48.- La propiedad place-items se puede usar para establecer los valores align-items y justify-items AL MISMO TIEMPO.
+        - La propiedad place-items, toma UNO o DOS valores.
+        - Si se proporciona UN VALOR, se utilizará para ambas (align-items y justify-items).
+        - Si se proporciona DOS VALORES, EL PRIMER valor se usará para ALIGN-ITEMS, y el SEGUNDO VALOR se usará para JUSTIFY-ITEMS
+        - Asignamos al selector .image-wrapper una propiedad place-items establecida en center.*/
+
+.image-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(3, min-content);
+    gap: 2rem;
+    place-items: center;
+} 
+
+/* 48.- Creamos una regla .image-1, .image-3 y asignamos una propiedad grid-column establecida en 1 / -1.
+        - Esto permitirá que la PRIMERA y la TERCERA imagen abarquen TODO EL ANCHO DE LA CUADRÍCULA*/
+
+.image-1, .image-3 {
+    grid-column: 1 / -1;
+}
+
+/* 49.- Ahora que el diseño de la revista está terminado, debemos hacerlo ADAPTABLE. 
+        - Comenzamos con una consulta @media para only screen con un max-width de 720px. Dentro, creamos un selector .image-wrapper y le damos una propiedad
+            grid-template-columns de 1fr
+        - Esta media query garantiza que SOLO LOS DISPOSITIVOS con PANTALLA y que cuando tenga un max-width de 720px se les aplique la condición*/
+
+@media only screen and (max-width: 720px) {
+    .image-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 50.- Creamos otro @media only screen con un max-width de 600px.
+        Dentro, creamos una regla .text-with-images y le asignamos una propiedad grid-template-columns de 1fr. 
+        - Esto colapsará el área de TEXTO INFERIOR en UNA sola columna en pantallas más PEQUEÑAS (El texto INFERIOR
+        o sea, el de A BRIEF STORY, se centrará EN UNA SOLA COLUMNA
+            cuando sea de 600px de ancho) */
+
+@media only screen and (max-width: 600px) {
+    .text-with-images {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 51.- Creamos una TERCER media query para only screen con un max-width de 550 px. 
+            Dentro, creamos un selector .hero-title con un font-size de 6rem,
+            un .hero-subtitle, .author, .quote, .list-title selector con un font-size de 1.8rem,
+            un selector .social-icons con font-size de 2rem y un selector .text con font-size de 1.6rem*/
+
+@media only screen and (max-width: 550px) {
+
+    .hero-title {
+        font-size: 6rem;
+    }
+
+    .hero-subtitle, .author, .quote, .list-title {
+        font-size: 1.8rem;
+    }
+
+    .social-icons {
+        font-size: 2rem;
+    }
+
+    .text {
+        font-size: 1.6rem;
+    }
+}
+
+/* 52.- Creamos una última consulta para only screen con max-width de 420px.
+        Dentro creamos un selector .hero-title con una propiedad font-size de 4-5rem */
+        /* Y listo! hemos terminado! :D*/
+
+@media only screen and (max-width: 420px) {
+
+    .hero-title {
+        font-size: 4.5rem;
+    }
 }
