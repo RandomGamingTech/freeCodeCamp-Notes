@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+
 }
 
 :root {
@@ -15,6 +16,8 @@
 html {
     font-family: play, sans-serif;
     font-size: 18px;
+    scroll-behavior: smooth;
+
 }
 
 body {
@@ -23,16 +26,26 @@ body {
     background-color: var(--var2);
 }
 
-#header {
+.navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    margin-bottom: 3rem;
+    top: 0; /*Para que el header se queda en la parte de arriba.*/
     right: 0; /* Esto centra el elemento IZQUIERDO, completamente a la izquierda (la imágen del header)*/
     left: 0; /* Esto centra el elemento DERECHO completamente a la derecha (los elementos a)*/ 
+    margin-bottom: 2em;
+    margin-bottom: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 1000;
+    background-color: var(--var2);
+
 }
 
+:target {
+    scroll-margin-top: 12vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+}
 
 #header-img {
     width: 8rem;
@@ -43,7 +56,7 @@ body {
 
 #nav-bar {
     display: flex;
-    flex-wrap: wrap;
+     /* Tenemos que agregarle las características de display flex y flex wrap, porque ponerlas en el contenedor padre no funciona*/
     text-align: center;
     margin: auto 4vw;
 }
@@ -61,3 +74,24 @@ body {
     border-radius: 1em;
 }
 
+.main {
+    padding-top: 9vh;
+    display: grid;
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    height: 100%;
+    width: 100%;
+}
+
+.title, .subtitle, .st-1 {
+    grid-column: 2/3;
+    row-gap: normal;
+}
+
+.subtitle{
+    grid-column: 2/3;
+    margin-top: -1vh;
+}
+
+.st-1 {
+
+}
