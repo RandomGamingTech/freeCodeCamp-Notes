@@ -53,8 +53,11 @@ a {
 /* 8.- Ahora podemos diseñar la cuadrícula. Grid es similar a Flexbox en que tienen una propiedad especial para los elementos PADRE e HIJO. 
         En este caso, nuestro elemento principal es el elemento main. Configuramos el contenido para que tengamos un diseño de TRES COLUMNAS agregando
         una propiedad grid-template-columns con un valor de 1fr 94rem 1fr
-        - Esto creará TRES columnas donde la columna de en medio tiene UN ANCHO de 94rem, y la PRIMERA y la SEGUNDA de 1fr.
-        - Fr quiere decir fracción, por lo que 1fr quiere decir que la primera y la última columna SOLO tendrán una FRACCIÓn del espacio RESTANTE del contenedor de cuadrícula.*/
+        - Esto creará TRES columnas donde la columna de en medio tiene UN ANCHO MÁXIMO de 94rem, y la PRIMERA y la SEGUNDA de 1fr.
+        - Fr quiere decir fracción, por lo que 1fr quiere decir que la primera y la última columna SOLO tendrán una FRACCIÓn del espacio RESTANTE del contenedor de cuadrícula.
+        
+        NOTA IMPORTANTE!!! min-content en grid-column nos sirve para definir que el ANCHO mínimo será según el TAMAÑO DEL CONTENIDO, pero este no sobrepasará el ANCHO MÁXIMO.
+                            min-content en grid-row nos sirve para definir EL ALTO de la fila SEGÚN EL CONTENIDO, pero sin sobrepasar el alto máximo.*/
 
 /* 9.- Usamos la FUNCIÓn minmax para hacer que las COLUMNAS se ADAPTEN a CUALQUIER DISPOSITIVO.
         - La función minmax toma dos argumentos, siendo el PRIMERO el valor MÍNIMO y el SEGUNDO el MÁXIMO. 
@@ -311,7 +314,7 @@ img {
             y una grid-template-rows establecida en (3, min-content) (o sea, FILAS SEGÚN LA ALTURA.)...
         - Esto le dará a nuestra cuadrícula filas que se ajustan en altura según el contenido, pero columnas que mantienen un ANCHO FIJO*/
 
-/* 47.- La propiedad GAP es una forma abreviada de establecer el varlo de column gao y row-gap AL MISMO TIEMPO.
+/* 47.- La propiedad GAP es una forma abreviada de establecer el varlo de column gap y row-gap AL MISMO TIEMPO.
         - Si le damos UN SOLO VALOR, establece tanto column-gap como row-gap con ESE VALOR.
         - Si le damos DOS VALORES, establece row-gap en el PRIMER VALOR y column-gap EN EL SEGUNDO.
         - Le damos a nuestro selector .image-wrapper una propiedad gap establecida en 2rem*/
