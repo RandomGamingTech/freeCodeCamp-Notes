@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    border: solid;
+
+
 
 }
 
@@ -71,7 +72,7 @@ body {
 }
 
 .nav-link:hover {
-    background-color: var(--var3);
+    background-color: black;
     border-radius: 1em;
 }
 
@@ -79,10 +80,9 @@ body {
     padding-top: 7rem;
     display: grid;
     grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
-    grid-template-rows: auto;
+    grid-template-rows: min-content; /*para que las filas se ajusten automáticamente al la altura de su contenido. */
     height: 100%;
     width: 100%;
-    margin: auto;
 }
 
 
@@ -109,3 +109,37 @@ body {
     font-style: italic;
 }
 
+.video {
+border-radius: 5px;
+grid-column: 2/3;
+margin: auto;
+}
+
+.cards {
+    display: flex;
+    grid-column: 2/3;
+    gap: 2vw;
+    margin-top: 3rem;
+}
+
+.card {
+    border: 4px solid var(--var6);
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--var3);
+}
+
+.Product {
+    background-color: var(--var2);
+    color: var(--var4);
+    margin-top: -0.1px;
+    padding: 15px;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: #fff159;
+    padding: 10%;
+    margin-top: -20px;
+}
