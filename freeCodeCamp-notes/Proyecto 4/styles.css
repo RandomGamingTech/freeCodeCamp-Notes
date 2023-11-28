@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
-
-
+ 
 
 }
 
@@ -16,7 +15,7 @@
 }
 
 html {
-    font-family: play, sans-serif;
+    font-family: play, Kdam Thmor Pro, Smooch Sans, sans-serif;
     font-size: 18px;
     scroll-behavior: smooth;
 
@@ -30,8 +29,53 @@ body {
 
 .navigation {
     display: flex;
-    align-items: center;
+    /* - justify-content nos permite ALINEAR el elemento según como queramos.
+        - flex-start es la versión por default, nos lo deja al inicio del elemento padre
+        - flex-end lo deja AL FINAL, del elemento padre (superior derecha)
+        - center como su nombre lo dice, LO CENTRA
+        - space-betweeen deja a los elementos separados uniformemente con un espacio entre ellos (pero sin espacio entre el borde de su elemento padre y su lateral correspondiente)
+        - space-around es similar a space-between, pero este sí deja espacio en todos los laterales del elemento flexbox
+        - space-evenly distribuye el espacio UNIFORMEMENTE entre TODOS los LATERALES del elemento flexbox.*/
+    /* - flex-direction: row; Recordar que flex direction es para escoger el axis de nuestro elemento (horizontal o vertical, r)*/    
     justify-content: space-between;
+        /* Align items. justify-content es para alinear elementos en su EJE PRINCIPAL (sea row o column) pero también tenemos la propiedad align-items, para alinear los elementos en su EJE TRANSVERSAL.
+        -flex-start deja al elemento al inicio del eje transversal (opción por default)
+        - flex-end deja al elemento AL FINAL de su eje transversal (si flex-direction está en su valor por default, o sea, row, entonces irán HACIA ABAJO)
+        - center deja al elemento EN EL CENTRO del eje transversal, o sea, lo deja justo en el medio de X y Y (justo en el centro).
+        - baseline deja a los elementos basados en su TEXTO INTERIOR (por ejemplo, si tenemos un card con texto adentro, alineará el elemento según el TAMAÑO de su TEXTO PARA QUE ESTE esté ALINEADO.) */
+    align-items: center;
+    /* Usamos flex wrap, para que los elementos que no quepan en el EJE PRINCIPAL (sea flex-direction row o column, izquierda a derecha o arriba y abajo) no colisionen entre sí. En su lugar
+        estos elementos lo que harán es que cuando ya no encuentren espacio en el eje principal, se moverán a otra fila los que NO QUEPAN.
+        - Por defecto, está en nowrap */
+    flex-wrap: nowrap;
+    /* IMPORTANTE, si tenemos configurado flex-wrap en wrap, entonces UNA NUEVA PROPIEDAD CSS se desbloquea, la cuál es align-content. */
+    /* - align-content. Esta propiedad solamente se desbloquea cuando tenemos flex-wrap en wrap.
+        Esta propiedad nos permite ALINEAR TODO en el EJE TRANSVERSAL, o sea, si tenemos el flex-direction en row, este alineará verticalmente (el eje contrario al PRINCIPAL).
+        - si ponemos align-content en flex-end entonces mandará a los elementos HACIA ABAJO.
+        - si lo ponemos en center, entonces los madará al centro
+        - Básicamente, se comporta como align-items.*/
+    /* - gap. Nosotros también podemos agregar gaps (brechas o espacios) entre nuestros elementos flexbox cuando ESTÁN UNIDOS UNOS A OTROS (como con flex start).
+         Esto para poder separarlos de manera que mejor nos convenga. */
+
+    /* Por último, tenemos la propiedad flex-grow
+    - flex-grow nos permite darle UN TAMAÑO en específico a UNO DE NUESTROS ELEMENTOS FLEXBOX EN ESPECÍFICO. 
+        - Para esto tenemos que crear un selector para apuntar específicamente al elemento que queremos darle un tamaño particular.
+        NOTA IMPORTANTE!! flex-grow solo toma un valor SIN UNIDADES (vh, vw, % o px) sino que toma un dígito solamente */
+    /* flex-shrink. También tenemos la propiedad flex-shrink, la cuál también toma UN VALOR SIN MEDIDA (px, vw, %...)
+        - Esta propiedad sirve para establecer CUÁN RÁPIDO UN ELEMENTO SE ENCOGE en comparación de los demás.
+        - Entre mayor sea el número (del 0 al 5) MÁS RÁPIDO SE ENCOGERÁ nuestro elemento en relación a los otros.
+        - Si establecemos el flex-shrink en 0, ESTE NO SE ENCOGERÁ...! */
+    /* flex-basis. Si tenemos un ANCHO establecido en nuestro flexbox como con un width, entonces PODEMOS SOBREESCRIBIRLO con flex-basis.
+        - Esta propiedad la podemos establecer con valor (px, %, unidades relativas)
+        - Si establecemos esta propiedad a 0 entonces SE ENCOGERÁ AL MÁXIMO. */
+    /* flex. la propiedad flex es la abreviatura de flex-growth como shrink y flex-basis COMBINADOS.
+        - Toma 3 parámetros; pero el segundo y el tercero son opcionales.
+        - Cuando establecemos la propiedad flex, escribiremos 1, ya que los otros dos valores se establecerán AUTOMÁTICAMENTE e INTELIGENTEMENTE. */
+    /* align-self. align-self nos permite ALINEAR UN ELEMENTO INDIVIDUALMENTE en el contenedor.
+        Por ejemplo, si tenemos el contenedor de nuestros elementos alineado en flex-start, y seleccionamos align-self en center, entonces este único elemento
+        seleccionado con un selector específico, se alineará en el medio DEL EJE TRANSVERSAL (el eje contrario al principal). */
+    /* order. La propiedad order nos permite ORDENAR nuestros elementos según el valor que le demos. Por ejemplo si tenemos 3 elementos flexbox en un contendor,
+            y le damos al tercero la propiedad order de -1 se recorrerá -1 lugar en la lista. */
     position: fixed;
     top: 0; /*Para que el header se queda en la parte de arriba.*/
     right: 0; /* Esto centra el elemento IZQUIERDO, completamente a la izquierda (la imágen del header)*/
@@ -66,28 +110,31 @@ body {
 #nav-bar a {
     display: block;
     margin: auto 50px;
-    padding: 4px;
+    padding: 5px;
     text-decoration: none;
     color: var(--var4);
 }
 
 .nav-link:hover {
     background-color: black;
-    border-radius: 1em;
+    border-radius: 4px;
 }
 
 .main {
-    padding-top: 7rem;
+    
     display: grid;
-    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
-    grid-template-rows: min-content; /*para que las filas se ajusten automáticamente al la altura de su contenido. */
-    height: 100%;
-    width: 100%;
+    grid-template-columns: minmax(max-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
+    grid-template-rows: auto; /*para que las filas se ajusten automáticamente al la altura de su contenido. */
+    grid-auto-flow: column; /* Esto creará NUEVAS COLUMNAS DE LA MISMA ALTURA PROPORCIONAL A LAS OTRAS, esto cuando ya estemos trabajando con las otras.*/
+    grid-auto-columns: 1fr;
 }
 
 
-.title, .text {
+.grid-column2 {
     grid-column: 2/3;
+}
+
+.title, .text {
     margin: 3px;
 }
 
@@ -96,8 +143,7 @@ body {
 }
 
 .text{
-    grid-column: 2/3;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .title1 {
@@ -111,35 +157,82 @@ body {
 
 .video {
 border-radius: 5px;
-grid-column: 2/3;
-margin: auto;
+margin-left: 25%;
 }
 
 .cards {
     display: flex;
-    grid-column: 2/3;
     gap: 2vw;
-    margin-top: 3rem;
+    justify-content: space-evenly;
+    margin-top: 4rem;
 }
 
 .card {
-    border: 4px solid var(--var6);
+    border: 2px solid #6E2C00;
     text-align: center;
     border-radius: 5px;
-    background-color: var(--var3);
+    width: 20rem;
+
 }
 
 .Product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--var2);
     color: var(--var4);
+    font-weight: bold;
     margin-top: -0.1px;
     padding: 15px;
+    height: 80px;
 }
 
 .price {
+    display: flex;
+    justify-content: center;
     font-size: 30px;
     font-weight: bolder;
-    background-color: #fff159;
+    background-color: var(--var1);
     padding: 10%;
     margin-top: -20px;
+}
+
+.img-product {
+    height: 150px;
+    width: 150px;
+}
+
+.description {
+    height: 100px;
+    font-style: italic;
+    background-color: var(--var2);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
+    background-color: linear-gradient(var(--var1) 3%, var(--var6) 15%, var(--var3));
+    font-weight: bolder;
+    border-radius: 1rem;
+}
+
+.button:hover {
+    background-color: var(--var1);
+    cursor: pointer;
+}
+
+.grid-column1 {
+    grid-column: 1;
+}
+
+#question {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-top: 135px;
+    font-weight: bolder;
+    font-size: 50px;
 }
