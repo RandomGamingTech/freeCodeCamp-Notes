@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
- 
-
+    border: solid;
+   
 }
 
 :root {
@@ -104,7 +104,7 @@ body {
     display: flex;
      /* Tenemos que agregarle las características de display flex y flex wrap, porque ponerlas en el contenedor padre no funciona*/
     text-align: center;
-    margin: auto 4vw;
+    margin: auto;
 }
 
 #nav-bar a {
@@ -121,9 +121,8 @@ body {
 }
 
 .main {
-    
     display: grid;
-    grid-template-columns: minmax(max-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
     grid-template-rows: auto; /*para que las filas se ajusten automáticamente al la altura de su contenido. */
     grid-auto-flow: column; /* Esto creará NUEVAS COLUMNAS DE LA MISMA ALTURA PROPORCIONAL A LAS OTRAS, esto cuando ya estemos trabajando con las otras.*/
     grid-auto-columns: 1fr;
@@ -157,7 +156,9 @@ body {
 
 .video {
 border-radius: 5px;
-margin-left: 25%;
+width: 100%;
+max-width: 80%;
+margin: 10%;
 }
 
 .cards {
@@ -226,13 +227,90 @@ margin-left: 25%;
 
 .grid-column1 {
     grid-column: 1;
+    width: ;
 }
 
 #question {
+    color: tomato;
     display: flex;
     justify-content: flex-end;
     position: relative;
-    margin-top: 135px;
+    right: 20px;
+    margin-left: 20px;
+    margin-top: 134.5px;
     font-weight: bolder;
     font-size: 50px;
+}
+
+#target {
+    color: tomato;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: 20px; /* Con right 20px nuestro elemento NO EMPUJA a la otra columna, a diferencia de con padding y con margin*/
+    margin-top: 72.5px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+#shop {
+    color: tomato;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: 20px;
+    margin-top: 90px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+
+@media only screen and (max-width: 1055px) {
+    .cards {
+        flex-wrap: wrap;
+    }
+
+    .text {
+        width: 80vw;
+    }
+
+    .grid-column1 {
+        width: 100%;
+    }
+
+    #header-img {
+        display: block;
+        margin: 50;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #nav-bar a{
+        margin: 4px;
+    }
+
+}
+
+@media only screen and (max-width: 780px) {
+
+    .navigation {
+        flex-wrap: wrap;
+        top: 0;
+    }
+
+
+    #nav-bar a {
+        margin: 2vw;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cards {
+        flex-wrap: wrap;
+    }
+
+
 }
