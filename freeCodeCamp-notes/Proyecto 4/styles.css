@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
-
-   
+    border: solid;
+    
 }
 
 :root {
@@ -24,6 +24,7 @@ html {
 body {
     width: 100%;
     height: 100%;
+    min-width: 50%;
     background-color: var(--var3);
 }
 
@@ -122,43 +123,67 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
+    grid-template-columns: minmax(1rem, 1fr) minmax(min-content, 1fr) minmax(1rem, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
     margin-top: 150px;
-}
-
-.title, .text {
-    margin: 3px;
 }
 
 .title {
     color: var(--var4);
+    margin-bottom: -15px;
 }
 
-.text{
+.texto {
     margin-bottom: 4rem;
+    padding-left: 4rem;
+}
+
+.texto:last-of-type {
+    margin-bottom: unset; /* Esto para que no empuje hacia abajo el video*/
 }
 
 .title1 {
     font-size: 30px;
+    font-family: Kdam Thmor Pro;
+    text-align: center;
+    margin: unset;
 }
 
-.title1, .text1 {
+.text1 {
+    display: flex;
+    align-items: center;
     text-align: center;
-    font-style: italic;
+    padding: unset;
+    width: 100%;
+}
+
+.title1 {
+    margin: unset;
+
+}
+
+.title2, .title3, .title4 {
+    display: flex;
+    align-items: center;
+}
+
+#question, #target, #shop {
+    margin-right: 1rem;
+    position: relative;
+    top: 1rem;
+    font-size: 50px;
 }
 
 .video {
 border-radius: 5px;
 width: 100%;
-max-width: 80%;
-margin: 10%;
+max-width: 50%;
+margin: 5rem 25%;
 }
 
 .cards {
     display: flex;
     gap: 2vw;
     justify-content: space-evenly;
-    margin-top: 4rem;
 }
 
 .card {
@@ -218,40 +243,39 @@ margin: 10%;
     cursor: pointer;
 }
 
-.grid-column1 {
+/* .grid-column1 {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: end;
     position: relative;
-    top: 35px;
-    padding-top: 100px;
-}
-
-#question, #target, #shop {
-    font-size: 50px;
-}
+    padding-top: 135px;
+} */
 
 @media only screen and (max-width: 1055px) {
 
+    :target {
+        scroll-margin-top: 15vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+    }
+
     .main {
        margin-top: 150px;
+    }
+
+        .navigation {
+        display: block;
+    }
+
+        .text {
+        width: 80vw;
     }
 
     .cards {
         flex-wrap: wrap;
     }
 
-    .text {
-        width: 80vw;
-    }
 
     .grid-column1 {
         width: 100%;
-    }
-
-    .navigation {
-        display: block;
     }
 
     #header-img {
@@ -270,11 +294,16 @@ margin: 10%;
         justify-content: center;
     }
 
-
-
+    .text {
+        margin-top: 17px;
+    }
 }
 
 @media only screen and (max-width: 780px) {
+
+    :target {
+        scroll-margin-top: 17vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+    }
 
     .navigation {
         flex-wrap: wrap;
@@ -291,8 +320,8 @@ margin: 10%;
     }
 
     .text {
-        display: flex;
-        flex-wrap: wrap;
+
+        margin-top: 18px;
        
     }
 
