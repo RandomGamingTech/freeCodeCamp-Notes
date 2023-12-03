@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    
 }
 
 :root {
@@ -10,7 +11,8 @@
     --var5: rgba(22, 22, 23, .8);
     --var6: #1d1d1f;
     --var7: rgba(255, 255, 255, .8);
-    --var8: #888888;
+    --var8: #F7F9F9;
+    --var9: #888888;
 
 
 }
@@ -19,13 +21,13 @@ html {
     font-family: play, Kdam Thmor Pro, Smooch Sans, Nova Square, sans-serif;
     font-size: 18px;
     scroll-behavior: smooth;
-
 }
 
 body {
     width: 100%;
     height: 100%;
-    min-width: 50%;
+    position: absolute;
+    left: 0;
     background-color: var(--var3);
 }
 
@@ -83,16 +85,15 @@ body {
     right: 0; /* Esto centra el elemento IZQUIERDO, completamente a la izquierda (la imágen del header)*/
     left: 0; /* Esto centra el elemento DERECHO completamente a la derecha (los elementos a)*/ 
     margin-bottom: 2em;
-    margin-bottom: 1em;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 13px;
     z-index: 1;
-    background-color: var(--var3);
+    background: linear-gradient(90deg, var(--var8) 40%, var(--var2));
 
 }
 
 :target {
-    scroll-margin-top: 12vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+    scroll-margin-top: 12vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
 }
 
 #header-img {
@@ -124,13 +125,13 @@ body {
 }
 
 .main {
-    background-color: var(--var3);
+    background: linear-gradient(var(--var8) 30%, var(--var3));
     width: 100%;
     height: 100%;
     position: relative;
     display: grid;
     grid-template-columns: minmax(1rem, 1fr) minmax(min-content, 1fr) minmax(1rem, 1fr); /* Con esto, centramos exactamente al centro cada columna, sin preocuparnos en este caso por align-items y justify-content o por margins*/
-    margin-top: 100px;
+    padding-top: 7rem;
 }
 
 .title {
@@ -295,29 +296,48 @@ margin: 5rem 25%;
     background-color: var(--var1);
 }
 
-/* .grid-column1 {
+footer {
+    width: 100%;
+    background-color: #888888;
+    margin-top: 20rem;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.contact {
     display: flex;
-    flex-direction: column;
-    align-items: end;
-    position: relative;
-    padding-top: 135px;
-} */
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.copyright {
+    display: flex;
+    justify-content: flex-end;
+    font-size: small;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.contact a {
+    text-decoration: none;
+    color: unset;
+}
 
 @media only screen and (max-width: 1055px) {
 
     :target {
-        scroll-margin-top: 15vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+        scroll-margin-top: 13rem; 
     }
 
     .main {
-       padding-top: 4vh;
+       padding-top: 10rem;
     }
 
-        .navigation {
+    .navigation {
         display: block;
     }
 
-        .text {
+    .text {
         width: 80vw;
     }
 
@@ -345,25 +365,17 @@ margin: 5rem 25%;
     #nav-bar {
         justify-content: center;
     }
-
-    .text {
-        margin-top: 17px;
-    }
 }
 
 @media only screen and (max-width: 780px) {
 
     :target {
-        scroll-margin-top: 17vh; /* Con esto hacemos que nuestra barra de navegación NO OCULTE la parte SUPERIOR de nuestro ELEMENTO DESTINO. !!Le ponemos una unidad 13vh RELATIVA para que funcione con los diferentes tamaños de pantalla.*/
+        scroll-margin-top: 12rem; 
     }
 
     .navigation {
         flex-wrap: wrap;
         top: 0;
-    }
-
-    .main {
-        padding-top: 4vh;
     }
 
     #nav-bar {
@@ -372,10 +384,6 @@ margin: 5rem 25%;
 
     #nav-bar a {
         margin: 2vw;
-    }
-
-    .text {
-        margin-top: 18px;
     }
 
     .cards {
