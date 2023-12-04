@@ -1,0 +1,198 @@
+/* 1.- Creamos un selector para la class wheel. Definimos el border con los valores
+        2px solid black, el border-radius a 50% y el margin-left a 50px. */
+/* 2.- Definimos la propiedad position del selector wheel con el valor absolute.
+        Definimos la propiedad height y de width en 55vw.
+        Esto creará un cículo*/
+/* 3.- Le damos las propiedades max-height y max-width en 500px */
+/* 19.- La propiedad animation-name se usa para vincular la regla @keyframes a un selector CSS. El valor de la propiedad debe COINCIDIR con el nombre de la regla @keyframes.
+        - Le damos a este selector la propiedad animation-name establecida en wheel
+        
+        - La propiedad animation-duration se usa para establecer CUANTO TIEMPO TARDA LA ANIMACIÓN en COMPLETARSE. El tiempo debe ser especificado en segundos (s) o milisegundos (ms).
+          Establecemos nuestro selector .wheel para que tenga una propiedad animation-duration establecida en 10s */
+/* 20.- La propiedad animation-iteration-count establece CUÁNTAS VECES se REPETIRÁ nuestra animación. Puede ser establecido a un número, o a infinite.
+        - Nuestra noria no debe detenerse, asi que establecemos animation-iteration-count en infinite.
+        
+        - La propiedad animation-timing-function establece CÓMO DEBERÍA PROGRESAR la animación CON EL TIEMPO.
+          Hay distintos tipos de valores para esta propiedad, pero queremos que la animación de la noria se reproduzca AL MISMO RITMO de principio a fin.
+          - Establecemos animation-timing-function en linear en nuestro selector wheel*/
+
+.wheel {
+    width: 55vw;
+    height: 55vw;
+    max-height: 500px;
+    max-width: 500px;
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-left: 50px;
+    animation-name: wheel;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* 4.- Creamos un selector para el elemento .line Comenzamos por establecer el background-color en black
+        el width en 50% y el height a 2px */
+/* 5.- Establecemos la propiedad position del selector .line en absolute, la propiedad left en 50% y top en 50% */
+/* 6.- La propiedad transform-origin se usa para establecer el punto alrededor del cual se aplica la transformación CSS.
+        Por ejemplo, al usar rotate, el transform-origin determina alrededor de qué punto el elemento es rotado.
+        - Le damos a line un transform-origin de 0% 0%. Esto DESPLAZARÁ el punto de origen en 0% desde la izquierda y 0% desde el
+          el borde superior, colocándolo en la esquina SUPERIOR IZQUIERDA del elemento. */
+.line {
+    background-color: black;
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 0%;
+}
+
+/* 7.- Creamos un selector que apunte a nuestro segundo elemento .line.
+        - Establecemos la propiedad transform en rotate(60deg).
+        - Recordar que la propiedad transform nos permite manipular la figura de un elemento. En este caso
+          usar el valor rotate(60deg) hará que el elemento rote alrededor de transform-origin en 60 grados en el sentido de las agujas
+          del reloj. */
+.line:nth-of-type(2) {
+        transform: rotate(60deg);
+}
+
+/* 8.- Usando el mismo patrón, creamos un nuevo selector para el TERCER .line, el cuarto, el quinto y el sexto line también.
+        Establecemos la propiedad transform para el tercer .line a rotate(120deg), para el cuarto a rotate(180deg), para el quinto a rotate(240deg)
+        y para el sexto a rotate(300deg) */
+
+.line:nth-of-type(3) {
+        transform: rotate(120deg);
+}
+
+.line:nth-of-type(4) {
+        transform: rotate(180deg);
+}
+
+.line:nth-of-type(5) {
+        transform: rotate(240deg);
+}
+
+.line:nth-of-type(6) {
+        transform: rotate(300deg);
+}
+
+/* 9.- Creamos un selector .cabin 
+   10     Establecemos su background-color en red, el width en 20% y la height a 20% */
+/* 11.- Establecemos la position de cabin en absolute y el border a 2px solid */
+/* 12.- Establecemos una propiedad transform-origin con un valor de 50% 0%. Esto establecerá que el punto esté 
+        desplazado un 50% horizontalmente desde el punto inicial 0% (esquina superior derecha) hacia el centro 
+        y verticalmente se quedará en la altura del punto de origen, lo que lo posicionará en el centro superior-*/
+/* 22.- Con nuestro selector wheel creamos cuatro propiedades diferentes para controlar nuestra animación. Para nuestro selector cabin podemos usar la propiedad animation
+        para establecerlos todos a la vez.
+        
+        - Establecemos la propiedad animation en cabins 10s linear infinite 
+          Esto establecerá las propiedades animation-name, animation-duration, animation-timing-function y animation-iteration-count en ese orden. */
+/* 23.- Para que la animación de nuestra cabinba se vea más como un MOVIMIENTO BALANCEANTE, podemos usar la función de temporización ease-in-out.
+        - Este ajuste le dirá a la animación que empiece y termine a un ritmo más lento, pero que se mueva más rápido a mitad de ciclo.
+        
+        - Reemplazamos linear a ease-in-out en el selector cabin */
+
+.cabin {
+        background-color: red;
+        width: 20%;
+        height: 20%;
+        position: absolute;
+        border: 2px solid;
+        transform-origin: 50% 0%;
+        animation: cabins 10s ease-in-out infinite;
+}
+/* 13.- Es hora de posicionar las cabinas alrededor de la rueda. Seleccionamos el primer elemento de .cabin Establecemos la propiedad right a -8.5% y la propiedad top 
+        a 50%*/
+.cabin:nth-of-type(1) {
+        right: -8.5%;
+        top: 50%;
+}
+
+/* 14.- Siguiendo con el patrón, seleccionamos los siguientes elementos de .cabin y les aplicamos las siguientes reglas: 
+        - El segundo cabin right en 17% y top en 93.5%
+        - El tercero right en 67% y top en 93.5%
+        - El cuarto left -8.5% y top en 50%
+        - El quinto left en 17% y top en 7%
+        - El sexto right en 17% y top en 7% */
+.cabin:nth-of-type(2) {
+        right: 17%;
+        top: 93.5%;
+}
+
+.cabin:nth-of-type(3) {
+        right: 67%;
+        top: 93.5%;
+}
+
+.cabin:nth-of-type(4) {
+        left: -8.5%;
+        top: 50%;
+}
+
+.cabin:nth-of-type(5) {
+        left: 17%;
+        top: 7%;
+}
+
+.cabin:nth-of-type(6) {
+        right: 17%;
+        top: 7%;
+}
+
+/* 15.- La regla @keyframes es usada para definir el FLUJO de una ANIMACIÓN CSS. Dentro de la regla @keyframes podemos crear selectores para puntos específicos en la
+        secuencia de animación, tales como 0% o 25%, o usar from y to para DEFINIR DÓNDE EMPIEZA y TERMINA una secuencia.
+        Las reglas @keyframes requieren que se les asigne un nombre, que se usan en otras reglas para hacer referencia.
+        Por ejemplo, la regla @keyframes freeCodeCamp {} se llamará freeCodeCamp.
+        
+        - Creamos una regla @keyframes llamada wheel*/
+/* 16.- Ahora tenemos que definir cómo debe empezar nuestra animación. Para esto, tenemos que definir una regla 0% dentro de nuestra regla @keyframes wheel.
+        - Las propiedades que establezcamos en este selector anidado, se aplicarán al INICIO de nuestra animación (ya que es el 0%) */
+/* 17.- Le damos a la regla 0% la propiedad transform establecida en rotate(0deg). 
+        - Esto iniciará la animación SIN NINGUNA rotación */
+/* 18.- Ahora le damos a la regla @keyframes wheel un selector de 100%. Dentro de este establecemos transform en rotate(360deg). Al hacer esto, nuestra animación hará una rotación
+        entera. */
+
+        @keyframes wheel {
+        0% {
+                transform: rotate(0deg);
+        }
+        100% {
+                transform: rotate(360deg);
+        }
+}
+
+/* 21.- Creamos otra regla keyframes con el nombre cabins. Usamos las mismas propiedades que en nuestra anterior regla keyframes,
+        pero estableciendo la propiedad transform del selector 100% en rotate(-360deg) */
+/* 24.- Podemos usar las reglas @keyframes para comtrolar algo más que la transformación de nuestro elemento.
+        - En el selector 0%, establecemos el background-color en yellow */
+/* 25.- Entre los selectores 0% y 100% agregamos un 50%. Esto se aplicará en el MEDIO DEL CICLO de la animación.
+        - Establecemos background-color en purple */
+/* 26.- Debido a que la animación está en un bucle infinito y los colores del inicio y del final no son los mismos, la transición cuando cambia de AMARILLO 
+        a ROJO es repentina.
+        
+        - Para comenzar a arreglar esto, eliminamos el background-color de nuestro selector 0% */
+/* 27.- Creamos un nuevo selector 25% entre nuestros selectores 0% y 50%
+        - Le damos a este nuevo selector la propiedad background-color de yellow */
+/* 28.- Finalmente, creamos un nuevo selector 75% entre 50% y 100% 
+        - Le damos a nuestro nuevo selector la propiedad background-color de yellow
+
+        - Con esto, la animación se verá mucho más suave y la noria estará terminada      */
+
+@keyframes cabins {
+        0% {
+                transform: rotate(0deg);
+        }
+        25% {
+                background-color: yellow;
+        }
+        50% {
+                background-color: purple;
+        }
+        75% {
+                background-color: yellow;
+        }
+        100% {
+                transform: rotate(-360deg);
+        }
+}
