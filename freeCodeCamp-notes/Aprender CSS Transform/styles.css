@@ -70,6 +70,14 @@ body {
     z-index: 1;
 }
 
+/* 38.- We gave the .face elements a width of 60%, a height of 70% and a background-color of white */
+
+.face {
+    width: 60%;
+    height: 70%;
+    background-color: white;
+}
+
 /* 26.- We targeted the .penguin-body element and gave it a width of 53%, and height of 45%. Then we set the background to a linear gradient at
         45deg rgb(134, 133, 133) from 0% rgb(234, 231, 231) from 25% and white from 67% */
 
@@ -97,17 +105,18 @@ body {
 
 /* 36.- We rounded the crest set its bottom corners a radius of 100%  leaging the top corners at 0% */
 
-
+/* 37.- We increased its transparency by 30% using opacity property */
 
 .penguin-body::before {
     content: "";
     position: absolute;
     width: 50%;
     height: 45%;
-    background-color: gray transparent;
+    background-color: gray;
     top: 10%;
     left: 25%;
     border-radius: 0% 0% 100% 100%;
+    opacity: 70%;
 }
 
 /* 10.- We targeted the left-mountain element, and set its width and height to 300px.
