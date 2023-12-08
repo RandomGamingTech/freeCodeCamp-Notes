@@ -1,0 +1,174 @@
+/* 1.- We targeted the body element to set the background to a linear gradient angled 45 degrees clockwise, 
+       starting at rgb(118, 201, 255) and ending at rgb(247, 255, 222) */
+
+/* 2.- We normalized our page's sizing by removing the body element's margin and padding */
+
+/* 3.- We normalized our page by setting the width to 100% and height to 100vh. This show us again the background color (it had disappeared)*/
+
+/* 4.- We removed both the horizontal and vertical scrollbars using only one property (overflow hidden)*/
+
+body {
+    background: linear-gradient(45deg, rgb(118, 201, 255), rgb(247,255,222));
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 5.- We targeted the ground element with a selector, then we set its width to take up the full width of the viewport (100vw). Then we set the height to 400px */
+
+/* 6.- We gave it a background with a linear gradient angled 90 degrees clockwise, starting at rgb(88, 175, 236) and ending at rgb(182, 255, 255) */
+
+/* 7.- As the .ground element will be third in the stacking context (contexto de apilado) of the page layout (disposición/diseño de la página), we set its z-index to 3 and position to absolute */
+
+.ground {
+    width: 100vw;
+    height: 400px;
+    background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
+    z-index: 3;
+    position: absolute;
+    margin-top: -58px;
+}
+
+/* 8.- We targeted the penguin element and we set its width and height to 300px */
+
+/* 9.- We used the margin property to horizontally center the .penguin element (margin auto), and we set the margin-top to 75px */
+
+/* 22.- We changed the stack level of the penguin element such that it appears IN FRONT of the ground element, and we gave it a position of relative. */
+
+.penguin {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 75px;
+    position: relative;
+    z-index: 4;
+}
+
+/* 28.- We targeted all descendent elements of the .penguin element and gave them a position of absolute */
+
+.penguin * {
+    position: absolute;
+}
+
+/* 24.- We targeted the penguin-head element and gave it a width half of its parent's, and a height of 45%. 
+        Then, we set the background to a linear gradient at 45deg starting at gray, and ending at rgb(239, 240, 228) */
+/* 25.- To change the head shape to a circular form, we set the radius of the top corners to 70% and the radius of the bottom corners to 65% */
+
+/* 29.- We positioned the penguin-head element 10% from the top, and 25% from the left of its parent. */
+
+/* 31.- We changed the stack level of the penguin-head element such that it appears in front of the .penguin-body element (z-index). */
+
+.penguin-head {
+    width: 50%;
+    height: 45%;
+    background: linear-gradient(45deg, gray, rgb(239, 240, 228));
+    border-radius: 70% 70% 65% 65%;
+    top: 10%;
+    left: 25%;
+    z-index: 1;
+}
+
+/* 26.- We targeted the .penguin-body element and gave it a width of 53%, and height of 45%. Then we set the background to a linear gradient at
+        45deg rgb(134, 133, 133) from 0% rgb(234, 231, 231) from 25% and white from 67% */
+
+/* 27.- To change the square body shape, we set the border-radius to 80% 80% 100% 100%, to give the penguin a slightly rounded body. */
+
+/* 30.- We positioned the .penguin-body element 40% from the top, and 23.5% from the left of its parent*/
+
+.penguin-body {
+    width: 53%;
+    height: 45%;
+    background: linear-gradient(45deg, rgb(134, 133, 133) 0%, rgb(234, 231, 231) 25%, white 67%);
+    border-radius: 80% 80% 100% 100%;
+    top: 40%;
+    left: 23.5%;
+}
+
+/* 32.- To give the penguin body a crest, we created a pseudo-element that is the first child of the .penguin-body element. We set the content property of the pseudo-element
+        to an empety string. We've achieved this creating a .penguin-body::before */
+
+/* 33.- We set its position relative to its closets positioned ancestor with position absolute */
+
+/* 34.- We gave the pseudo-element a width half that of its parent, a height 45% and background-color of gray. */
+
+/* 35.- We positioned the pseudo-element 10% from the top and 25% from the left of its parent */
+
+/* 36.- We rounded the crest set its bottom corners a radius of 100%  leaging the top corners at 0% */
+
+
+
+.penguin-body::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 45%;
+    background-color: gray transparent;
+    top: 10%;
+    left: 25%;
+    border-radius: 0% 0% 100% 100%;
+}
+
+/* 10.- We targeted the left-mountain element, and set its width and height to 300px.
+        Then, we set the background to a linear gradient starting at rbg(203, 241, 228) and ending at rgb(80, 183, 255) */
+
+/* 11.- To prevent the mountain from pushing ground element, we ajusted its position to prevent it from taking up space in the page layout (position absolute) */
+
+/* 12.- To make the mountain look more like a mountain, we used the skew (oblicuidad) transform function, wich takes two arguments. 
+        - The first being an angle to shear the x-axis by, and the second being an angle to shear the y-axis by.
+        
+        We used transform properti to skew the mountain by 0deg in the x-axis and 44deg in the y-axis */
+
+/* 13.- We set the stack level of the mountain element such that (de modo que) it remains directly behind the .ground element. (z-index indice de apilación) */
+
+/* 14.- To overlap (superponer) the mountain and .ground elements better, we gave the mountain a margin-top of 100px and the .ground element a margin-top of -58px */
+
+.left-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(80, 183, 255));
+    position: absolute;
+    transform: skew(0deg, 44deg);
+    z-index: 2;
+    margin-top: 100px;
+}
+
+/* 15.- We targeted the .back-mountain and set its width en height to 300px. Then we set the background to a linear gradient starting at rgb(203, 241, 228) and ending at 
+    rgb(47, 170, 255) */
+
+/* 16.- We set the position property of the .back-mountain to prevent it from taking up space in the page layout (en el diseño de la página) */
+
+/* 17.- We changed the stack level of the .back-mountain element such that it is (de modo que esté) directly behind the left-mountain element.*/
+
+/* 18.- We rotated the back-mountain element by 45deg clockwise (sentido de agujas del reloj). Then we gave it a left property of 110px and a top property of 225px  */
+
+.back-mountain {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+    position: absolute;
+    z-index: 1;
+    rotate: 45deg;
+    left: 110px;
+    top: 225px;
+}
+
+/* 19.- We gave the .sun element a width and height of 200px, and a background-color of yellow. */
+
+/* 20.- We set its position property to prevent it from taking up space in the page layout, and we set the border-radius such that the sun's shape is a circle */
+
+/* 21.- We have to position the sun in the top right corner of the screen such that 75px of its top and right edges are off screen (hint, with negative values for top and right)*/
+
+/* 23.- We targeted the .penguin-head element and gave it a width half of its  */
+
+.sun {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    position: absolute;
+    border-radius: 50%;
+    top: -75px;
+    right: -75px;
+}
+
