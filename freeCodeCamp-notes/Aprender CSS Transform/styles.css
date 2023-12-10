@@ -7,6 +7,22 @@
 
 /* 4.- We removed both the horizontal and vertical scrollbars using only one property (overflow hidden)*/
 
+/* 45.- So far, the .face and chin elements have the same background-color.
+        - We've created a custom CSS property called --penguin-face and set it to white */
+
+/* 46.- We've replaced values with our new --penguin-face variable where it was relevant */
+
+/* 65.- In this moment, the penguin's beak and feet share the same color. 
+        We created a another custom CSS variable named --penguin picorna and replaced all relevant property valus with it*/
+
+/* 70.- We've created a custom CSS variable named --penguin-skin and set it to gray. Then, we replaced all relevant property values with it. */
+
+ :root {
+    --penguin-face: white;
+    --penguin-picorna: orange;
+    --penguin-skin: gray;
+ }
+
 body {
     background: linear-gradient(45deg, rgb(118, 201, 255), rgb(247,255,222));
     margin: 0;
@@ -22,13 +38,46 @@ body {
 
 /* 7.- As the .ground element will be third in the stacking context (contexto de apilado) of the page layout (disposición/diseño de la página), we set its z-index to 3 and position to absolute */
 
+/* 82.- Finally we calculated the height of the .ground element to be the height of the viewport minus the ight of the penguin element. */
+
 .ground {
     width: 100vw;
-    height: 400px;
+    height: calc(100vh - 300px);
     background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
     z-index: 3;
     position: absolute;
     margin-top: -58px;
+    
+}
+
+/* 63.- We targeted the foot elements and gave them a width of 15%, height of 30% and background color of orange. */
+
+/* 64.- We positioned the foot elements 85% from the top of their parent and gave all corners a radius of 50% */
+
+/* 68.- We changed the stacking order of the foot elements such that they appear beneath the penguin-body element */
+
+.foot {
+    width: 15%;
+    height: 30%;
+    background-color: var(--penguin-picorna);
+    top: 85%;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* 66.- We targeted the foot element with a class of left and we've positioned it 25% left of its parent. Then, we targeted the foot element with a class of right and
+        positioneted it 25% right of its parent */
+
+/* 67.- We've rotated the left foot by 80deg and the right by -80deg */
+
+.foot.left {
+    left: 25%;
+    transform: rotate(80deg);
+}
+
+.foot.right {
+    right: 25%;
+    transform: rotate(-80deg);
 }
 
 /* 8.- We targeted the penguin element and we set its width and height to 300px */
@@ -37,6 +86,15 @@ body {
 
 /* 22.- We changed the stack level of the penguin element such that it appears IN FRONT of the ground element, and we gave it a position of relative. */
 
+/* 81.- We changed the penguin element's transition behavior during transformation to have a duration of 1s a timing function of ease-in-out and a delay of 0ms 
+        [property]: Specifies the CSS property to which the transition should be applied. For example, opacity, color, transform, etc.
+
+[duration]: Specifies the duration of the transition. It is expressed in seconds (s) or milliseconds (ms). In your case, it's 1s, which means the transition will take 1 second.
+
+[timing-function]: Specifies the timing function that describes the pace of the transition. It defines the acceleration curve. The value ease-in-out means that the transition will start slowly, speed up in the middle, and then slow down again. There are other timing functions like ease, linear, ease-in, ease-out, etc.
+
+[delay]: Optional. Specifies a delay before the transition starts. It is expressed in seconds (s) or milliseconds (ms).*/
+
 .penguin {
     width: 300px;
     height: 300px;
@@ -44,12 +102,25 @@ body {
     margin-top: 75px;
     position: relative;
     z-index: 4;
+    transition: transform 1s ease-in-out 0ms;
 }
 
 /* 28.- We targeted all descendent elements of the .penguin element and gave them a position of absolute */
 
 .penguin * {
     position: absolute;
+}
+
+/* 79.- We targeted the penguin element when it's active and increased its size by 50% in both dimensions */
+
+/* NOTE! When we use :active pseudoselector, we can transform our object when it's clicked over there */
+
+/* 80.- When we click over our penguin, it might look as tough we can drag it around. This is not true.
+        We indicated this to our users by givin the active element a cursor property of not-allowed */
+
+.penguin:active {
+    transform: scale(1.5);
+    cursor: not-allowed;
 }
 
 /* 24.- We targeted the penguin-head element and gave it a width half of its parent's, and a height of 45%. 
@@ -63,7 +134,7 @@ body {
 .penguin-head {
     width: 50%;
     height: 45%;
-    background: linear-gradient(45deg, gray, rgb(239, 240, 228));
+    background: linear-gradient(45deg, var(--penguin-skin), rgb(239, 240, 228));
     border-radius: 70% 70% 65% 65%;
     top: 10%;
     left: 25%;
@@ -72,10 +143,154 @@ body {
 
 /* 38.- We gave the .face elements a width of 60%, a height of 70% and a background-color of white */
 
+/* 39.- We made the corners of the face elements have a radius of 70% and the bottom corners have a radius of 60%. */
+
+/* 40.- We positioned the face elements so that they are 15% from the top */
+
 .face {
     width: 60%;
     height: 70%;
-    background-color: white;
+    background-color: var(--penguin-face);
+    border-radius: 70% 70% 60% 60%;
+    top: 15%;
+}
+
+/*  41.- We targeted the face element with the left class, and positioned it 5% left of its parent. 
+    NOTE we needed to add .face and .left classes in the selector without any space.
+    We use this type of selectors when we want to target some element class with two or more classes inside*/
+
+.face.left {
+    left: 5%;
+}
+
+/* 42.- We targeted the face with the right class, and positioned it 5% right of its parent */
+
+.face.right {
+    right: 5%;
+}
+
+/* 43.- We targeted the chin element and gave it a width set to 90%, height to 70% and we gave it a background-color of white */
+
+/* 44.- We've been positioned the chin element such that it is 25% from the top, and 5% from the left of its parent.
+        Then we gave the top corners a radius of 70%, and the bottom corners a radius of 100% */
+
+.chin {
+    width: 90%;
+    height: 70%;
+    background-color: var(--penguin-face);
+    top: 25%;
+    left: 5%;
+    border-radius: 70% 70% 100% 100%;
+}
+
+/* 47.- We targeted the eye elements and gave them a width of 15%, height of 17% and background-color of black */
+
+/* 48.- We positioned the .eye elements 45% from the top of their parent and gave all corners a rdius of 50% */
+
+.eye {
+    width: 15%;
+    height: 17%;
+    background-color: black;
+    top: 45%;
+    border-radius: 50%;
+}
+
+/* 49.- We targeted the eye element with the left class and positioned it 25% from the left of its parent. Then we targeted the eye element 
+        with the right class and positioned it 25% from the right of its parent. */
+
+.eye.left {
+    left: 25%;
+}
+
+.eye.right {
+    right: 25%;
+}
+
+/* 50.- We targeted the eye-lid elements and gave them a width of 150%, height of 100% and background-color of our current only variable */
+
+/* 51.- We positioned the eye-lid 25% from the top and -23% from the left of their parents.
+        Then we gave all corners a radius of 50% */
+
+.eye-lid {
+    width: 150%;
+    height: 100%;
+    background-color: var(--penguin-face);
+    top: 25%;
+    left: -23%;
+    border-radius: 50%;
+}
+
+/* 52.- We targeted the blush elements, and gave them a width of 15% height of 10% and a background-color of pink */
+
+/* 53.- We positioned the blush elements 65% from the top of their parent and gave all corners a radius of 50% */
+
+.blush {
+    width: 15%;
+    height: 10%;
+    background-color: pink;
+    top: 65%;
+    border-radius: 50%;
+}
+
+/* 54.- We targeted the blush element with a class of left and positioned it 15% left of its parent.
+        Then we targeted the .blush element with a class of right and positioned it 15% right of its parent. */
+
+.blush.left {
+    left: 15%;
+}
+
+.blush.right {
+    right: 15%;
+}
+
+/* 55.- We targeted the beak elements and gave them a height of 10%, background-color of orange, and gave all corners a radius of 50% */
+
+.beak {
+    height: 10%;
+    background-color: var(--penguin-picorna);
+    border-radius: 50%;
+}
+
+/* 56.- We targeted the beak element with a class of top and gave it a width of 20% and positioned it 60% from the top and 40% from the left of its parent */
+
+.beak.top {
+    width: 20%;
+    top: 60%;
+    left: 40%;
+}
+
+/* 57.- We targeted the beak element with a class of bottom and gave it a width 4% smaller than .beak.top, 5% further from the top and 2% further from the left of its parent than break.top */
+
+.beak.bottom {
+    width: 16%;
+    top: 65%;
+    left: 42%;
+}
+
+/* 58.- We targeted the shirt element and set its font-size to 25px, font-family to Helvetica with a fallback of sans-serif, and font-weight to bold */
+
+/* 61.- We positioned the .shirt element 165px from the top and 127.5px from the left of its parent. Then we increased its stacking order such that it appears above the .penguin-body element */
+
+/* 62.- We set the color to #6a6969 */
+
+.shirt {
+  font: bold 25px Helvetica, sans-serif;
+  top: 165px;
+  left: 127.5px;
+  z-index: 1;
+  color: #6a6969;
+}
+
+/* 59.- In some browsers, the heart emoji may look slighly different from the previous ste. This is because some of the character's properties were overriden by the font-weight style of bold.
+        We've fixed this by targeting the div with the heart emoji, and setting its font-weight to its original value. 
+        We did this by adding to the .shirt div selector a value of initial.*/
+
+/* 60.- We positioned the div with the heart emoji 22.5px from the top and 12px from the left of its parent */
+
+.shirt div {
+  font-weight:  initial;
+  top: 22.5px;
+  left: 12px;
 }
 
 /* 26.- We targeted the .penguin-body element and gave it a width of 53%, and height of 45%. Then we set the background to a linear gradient at
@@ -112,11 +327,77 @@ body {
     position: absolute;
     width: 50%;
     height: 45%;
-    background-color: gray;
+    background-color: var(--penguin-skin);
     top: 10%;
     left: 25%;
     border-radius: 0% 0% 100% 100%;
     opacity: 70%;
+}
+
+/*  69.- We targeted tge arm elements and gave them a width of 30%, a height of 60% and a background of linear gradient at 90deg from clockwise,
+        starting at gray and ending at rgb(209, 210, 199)*/
+
+/* 74.- To give it their arms a redounded shape, we added a border-radius of 30% for the top-left, top-right, and bottom left and 120% for the bottom left. */
+
+/* 75.- We changed the arm element stacking order such that they appear behind the penguin-body element */
+
+.arm {
+    width: 30%;
+    height: 60%;
+    background: linear-gradient(90deg, var(--penguin-skin), rgb(209,210,199));
+    border-radius: 30% 30% 30% 120%;
+    z-index: -1;
+}
+
+/* 71.- We targeted the arm element with a class of left and positioned it 35% from the top, 5% from the left of its parent. Then we targeted the arm element with a class of right
+        and we've positioned it 0% from the top and -5% from the right of its parent.*/
+
+/* 71.- Within the .arm.left element selector, we altered the origin of the transform function to be the top corner of its parent (transform-origin). */
+
+/* 72.- To keep the linear gradient on the correct side of the penguin's left arm, first we've rotated it by 130deg, then we've inverted the x-axis.
+        To do this, we've added a transform property with rotate(130deg) scaleX(-1) as values. */
+
+/* 78.- We used the wave animation on the left arm.  */
+
+.arm.left {
+    top: 35%;
+    left: 5%;
+    transform-origin: 0% 0%;
+    transform: rotate(130deg) scaleX(-1);
+    animation: wave 3s infinite linear;
+}
+
+/* 73.- We rotated the right arm by 45deg COUNTERCLOCKWISE */
+
+
+.arm.right {
+    top: 0%;
+    right: -5%;
+    transform: rotate(-45deg);
+}
+
+/* 76.- Now we are going to use CSS animations to make the penguin wave. 
+        We defined a @keyframes named wave */
+
+/* 77.- We've added percentual selectors to make the arms animation */
+
+@keyframes wave {
+    10% {
+        transform: rotate(110deg) scaleX(-1);
+    }
+
+    20% {
+        transform: rotate(130deg) scaleX(-1);
+    
+    }
+
+    30% {
+        transform: rotate(110deg) scaleX(-1);
+    }
+
+    40% {
+        transform: rotate(130deg) scaleX(-1);
+    }
 }
 
 /* 10.- We targeted the left-mountain element, and set its width and height to 300px.
